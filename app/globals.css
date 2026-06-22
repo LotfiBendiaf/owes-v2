@@ -33,10 +33,10 @@ body {
 
 html { scroll-behavior: smooth; }
 
-::selection { background: #fbbf24; color: #17204f; }
+::selection { background: #ef3f61; color: #17204f; }
 
 :where(a, button, input, textarea, select):focus-visible {
-  outline: 2px solid #fbbf24;
+  outline: 2px solid #ef3f61;
   outline-offset: 2px;
 }
 
