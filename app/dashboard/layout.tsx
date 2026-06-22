@@ -1,0 +1,10 @@
+import Link from "next/link";
+import { Bell, FileText, LayoutDashboard, MessageSquare, Settings, Users } from "lucide-react";
+import { requireUser } from "@/lib/authorization";
+import { SignOutButton } from "@/components/sign-out-button";
+
+export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
+  const session = await requireUser(); const role = session.user.role;
+  const nav = [{ label: "Vue d'ensemble", href: "/dashboard", icon: LayoutDashboard }, { label: "Demandes", href: "/dashboard/requests", icon: FileText }, { label: "Messages", href: "/dashboard/messages", icon: MessageSquare }, { label: "Notifications", href: "/dashboard/notifications", icon: Bell }, ...(role === "ADMIN" ? [{ label: "Utilisateurs", href: "/dashboard/users", icon: Users }] : []), { label: "Paramètres", href: "/dashboard/settings", icon: Settings }];
+  return <div className="min-h-screen bg-slate-50 lg:grid lg:grid-cols-[260px_1fr]"><aside className="hidden border-r border-slate-200 bg-white p-5 lg:flex lg:flex-col"><Link href="/" className="px-3 text-xl font-black">OWES</Link><p className="mt-8 px-3 text-xs font-bold uppercase tracking-widest text-slate-400">Espace {role === "ADMIN" ? "admin" : role === "EXPERT" ? "expert" : "client"}</p><nav className="mt-3 grid gap-1">{nav.map(({ icon: Icon, ...item }) => <Link key={item.href} href={item.href} className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-teal-50 hover:text-teal-800"><Icon size={17} />{item.label}</Link>)}</nav><div className="mt-auto border-t pt-4"><SignOutButton /></div></aside><div><header className="flex h-18 items-center justify-between border-b border-slate-200 bg-white px-4 sm:px-8"><div><p className="text-sm font-semibold">{session.user.name}</p><p className="text-xs text-slate-500">{session.user.email}</p></div><span className="rounded-full bg-teal-50 px-3 py-1 text-xs font-bold text-teal-800">{role}</span></header><main className="p-4 sm:p-8">{children}</main></div></div>;
+}

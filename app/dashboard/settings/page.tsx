@@ -1,0 +1,3 @@
+import { requireUser } from "@/lib/authorization";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+export default async function SettingsPage() { const session = await requireUser(); return <div><h1 className="text-3xl font-black">Paramètres</h1><Card className="mt-8 max-w-xl"><CardHeader><CardTitle>Profil</CardTitle></CardHeader><CardContent className="grid gap-4 text-sm"><div><p className="text-slate-500">Nom</p><p className="font-semibold">{session.user.name}</p></div><div><p className="text-slate-500">E-mail</p><p className="font-semibold">{session.user.email}</p></div><p className="rounded-xl bg-amber-50 p-3 text-amber-900">Les modifications de profil seront disponibles prochainement.</p></CardContent></Card></div>; }

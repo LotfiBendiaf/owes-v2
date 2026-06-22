@@ -1,0 +1,10 @@
+import { requireUser } from "@/lib/authorization";
+import { prisma } from "@/lib/prisma";
+import { money } from "@/lib/utils";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { updateRequestStatus } from "@/app/dashboard/requests/actions";
+import { Button } from "@/components/ui/button";
+import { inputClass } from "@/components/ui/field";
+export const dynamic = "force-dynamic";
+export default async function RequestsPage() { const session = await requireUser(); const where = session.user.role === "ADMIN" ? {} : session.user.role === "EXPERT" ? { expertId: session.user.id } : { clientId: session.user.id }; const rows = await prisma.serviceRequest.findMany({ where, include: { expert: true, payments: true }, orderBy: { createdAt: "desc" } }); const canManage = session.user.role === "ADMIN" || session.user.role === "EXPERT"; return <div><h1 className="text-3xl font-black">Demandes</h1><p className="mt-2 text-slate-500">Suivez les réservations et prestations de bout en bout.</p><Card className="mt-8"><CardHeader><CardTitle>{rows.length} demande(s)</CardTitle></CardHeader><CardContent><div className="grid gap-3">{rows.map((r) => <div key={r.id} className="grid gap-3 rounded-xl border p-4 sm:grid-cols-[1fr_auto_auto] sm:items-center"><div><p className="font-semibold">{r.subject}</p><p className="mt-1 text-xs text-slate-500">{r.customerName} · {r.email} · {r.kind}</p></div><p className="font-bold">{money(r.total)}</p>{canManage ? <form action={updateRequestStatus} className="flex gap-2"><input type="hidden" name="requestId" value={r.id} /><select name="status" defaultValue={r.status} className={inputClass}><option value="SUBMITTED">Reçue</option><option value="CONFIRMED">Confirmée</option><option value="IN_PROGRESS">En cours</option><option value="COMPLETED">Terminée</option><option value="CANCELLED">Annulée</option></select><Button size="sm">OK</Button></form> : <Badge>{r.status}</Badge>}</div>)}{!rows.length && <p className="py-10 text-center text-slate-500">Aucune demande.</p>}</div></CardContent></Card></div>; }

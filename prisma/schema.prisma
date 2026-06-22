@@ -1,0 +1,298 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  ADMIN
+  EXPERT
+  CLIENT
+}
+
+enum RequestKind {
+  MEETING
+  COWORKING
+  TRAINING
+  DOMICILIATION
+  CONSULTING
+}
+
+enum RequestStatus {
+  DRAFT
+  SUBMITTED
+  CONFIRMED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+enum PaymentMethod {
+  ONLINE
+  ON_SITE
+  BANK_TRANSFER
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String
+  email         String    @unique
+  emailVerified Boolean   @default(false)
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  role          Role      @default(CLIENT)
+  phone         String?
+  legacyId      Int?      @unique
+  legacyUsername String?
+  active        Boolean   @default(true)
+  sessions      Session[]
+  accounts      Account[]
+  clientProfile ClientProfile?
+  expertProfile ExpertProfile?
+  requests      ServiceRequest[] @relation("ClientRequests")
+  assignedRequests ServiceRequest[] @relation("ExpertRequests")
+  messages      ChatMessage[]
+  notifications Notification[]
+  files         FileAsset[]
+}
+
+model Session {
+  id        String   @id
+  expiresAt DateTime
+  token     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ipAddress String?
+  userAgent String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model Account {
+  id                    String    @id
+  accountId             String
+  providerId            String
+  userId                String
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  @@unique([providerId, accountId])
+  @@index([userId])
+}
+
+model Verification {
+  id         String   @id
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([identifier])
+}
+
+model ClientProfile {
+  id      String @id @default(cuid())
+  userId  String @unique
+  company String?
+  address String?
+  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model ExpertProfile {
+  id           String   @id @default(cuid())
+  userId       String   @unique
+  title        String
+  bio          String?
+  specialties String[]
+  location     String?
+  available    Boolean  @default(true)
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Category {
+  id          String    @id @default(cuid())
+  name        String
+  slug        String    @unique
+  description String?
+  services    Service[]
+}
+
+model Service {
+  id          String       @id @default(cuid())
+  name        String
+  slug        String       @unique
+  description String
+  kind        RequestKind
+  basePrice   Decimal      @db.Decimal(12, 2)
+  active      Boolean      @default(true)
+  categoryId  String
+  category    Category     @relation(fields: [categoryId], references: [id])
+  requests    ServiceRequest[]
+}
+
+model ServiceRequest {
+  id            String        @id @default(cuid())
+  legacyTable   String?
+  legacyId      Int?
+  kind          RequestKind
+  status        RequestStatus @default(SUBMITTED)
+  customerName  String
+  email         String
+  phone         String
+  subject       String
+  scheduledFor  DateTime?
+  notes         String?
+  details       Json?
+  total         Decimal       @db.Decimal(12, 2)
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  clientId      String?
+  client        User?         @relation("ClientRequests", fields: [clientId], references: [id], onDelete: SetNull)
+  expertId      String?
+  expert        User?         @relation("ExpertRequests", fields: [expertId], references: [id], onDelete: SetNull)
+  serviceId     String?
+  service       Service?      @relation(fields: [serviceId], references: [id], onDelete: SetNull)
+  payments      Payment[]
+  conversation  Conversation?
+  files         FileAsset[]
+
+  @@unique([legacyTable, legacyId])
+  @@index([clientId, status])
+  @@index([expertId, status])
+}
+
+model Payment {
+  id          String        @id @default(cuid())
+  amount      Decimal       @db.Decimal(12, 2)
+  currency    String        @default("DZD")
+  method      PaymentMethod
+  status      PaymentStatus @default(PENDING)
+  reference   String?       @unique
+  paidAt      DateTime?
+  createdAt   DateTime      @default(now())
+  requestId   String
+  request     ServiceRequest @relation(fields: [requestId], references: [id], onDelete: Cascade)
+}
+
+model Conversation {
+  id        String         @id @default(cuid())
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+  requestId String         @unique
+  request   ServiceRequest @relation(fields: [requestId], references: [id], onDelete: Cascade)
+  messages  ChatMessage[]
+}
+
+model ChatMessage {
+  id             String       @id @default(cuid())
+  body           String
+  createdAt      DateTime     @default(now())
+  readAt         DateTime?
+  senderId       String
+  sender         User         @relation(fields: [senderId], references: [id], onDelete: Cascade)
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  @@index([conversationId, createdAt])
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  title     String
+  body      String
+  href      String?
+  readAt    DateTime?
+  createdAt DateTime @default(now())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, readAt])
+}
+
+model FileAsset {
+  id        String          @id @default(cuid())
+  name      String
+  url       String
+  mimeType  String?
+  size      Int?
+  createdAt DateTime        @default(now())
+  ownerId   String?
+  owner     User?           @relation(fields: [ownerId], references: [id], onDelete: SetNull)
+  requestId String?
+  request   ServiceRequest? @relation(fields: [requestId], references: [id], onDelete: Cascade)
+}
+
+model Article {
+  id          String           @id @default(cuid())
+  legacyId    Int?             @unique
+  title       String
+  slug        String           @unique
+  author      String
+  publication String
+  excerpt     String
+  content     String
+  coverImage  String?
+  publishedAt DateTime
+  published   Boolean          @default(true)
+  sections    ArticleSection[]
+  media       ArticleMedia[]
+}
+
+model ArticleSection {
+  id        String  @id @default(cuid())
+  heading   String?
+  body      String
+  position  Int
+  articleId String
+  article   Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
+
+  @@unique([articleId, position])
+}
+
+model ArticleMedia {
+  id        String  @id @default(cuid())
+  url       String
+  alt       String?
+  position  Int
+  articleId String
+  article   Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  legacyId  Int?     @unique
+  name      String
+  subject   String
+  email     String
+  message   String
+  resolved  Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model MigrationRun {
+  id         String   @id @default(cuid())
+  source     String   @unique
+  importedAt DateTime @default(now())
+  summary    Json
+}

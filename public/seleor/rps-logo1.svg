@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 24127 10420" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g transform="matrix(1,0,0,1,-36077,-3853)">
+        <g id="artboard" transform="matrix(1.070855,0,0,1.372657,-2557.184346,-1436.030278)">
+            <rect x="36077.878" y="3853.134" width="22530.328" height="7590.72" style="fill:none;"/>
+            <clipPath id="_clip1">
+                <rect x="36077.878" y="3853.134" width="22530.328" height="7590.72"/>
+            </clipPath>
+            <g clip-path="url(#_clip1)">
+                <g transform="matrix(3.446943,0,0,2.722895,-99014.250184,-94899.850498)">
+                    <path d="M40357.369,36356.697L40357.369,36765.843L39294.377,37379.562L39294.377,36970.416L40357.369,36356.697Z" style="fill:rgb(247,127,0);"/>
+                </g>
+                <g transform="matrix(3.446943,0,0,2.722895,-99014.250184,-94899.850498)">
+                    <path d="M40357.369,36765.843L41417.496,37377.908L41419.532,38197.94L40711.849,38197.94L40711.7,38197.854L40711.551,38197.94L40357.369,38197.94L40357.369,37993.281L41062.16,37993.281L41062.16,37586.37L41066.03,37584.135L40357.369,37174.989L40357.369,36765.843Z" style="fill:rgb(255,221,186);"/>
+                </g>
+                <g transform="matrix(3.446943,0,0,2.722895,-99014.250184,-94899.850498)">
+                    <path d="M40357.369,37174.989L40357.369,37584.135L39294.377,38197.854L39294.377,37788.708L40357.369,37174.989Z" style="fill:rgb(255,221,186);"/>
+                </g>
+                <g transform="matrix(3.446943,0,0,2.722895,-99014.885216,-94936.120894)">
+                    <g transform="matrix(0.720932,0,0,0.720932,11252.284618,9274.370034)">
+                        <rect x="40711.849" y="39335.551" width="173.014" height="173.014" style="fill:rgb(247,127,0);"/>
+                    </g>
+                    <g transform="matrix(0.720932,0,0,0.720932,11409.837717,9274.370034)">
+                        <rect x="40711.849" y="39335.551" width="173.014" height="173.014" style="fill:rgb(247,127,0);"/>
+                    </g>
+                    <g transform="matrix(0.720932,0,0,0.720932,11409.837717,9429.812878)">
+                        <rect x="40711.849" y="39335.551" width="173.014" height="173.014" style="fill:rgb(247,127,0);"/>
+                    </g>
+                    <g transform="matrix(0.720932,0,0,0.720932,11252.284618,9429.812878)">
+                        <rect x="40711.849" y="39335.551" width="173.014" height="173.014" style="fill:rgb(247,127,0);"/>
+                    </g>
+                </g>
+                <g transform="matrix(7.988685,0,0,6.31062,39587.121067,-4398.705179)">
+                    <g transform="matrix(811.589532,0,0,811.589532,2440.068988,2149.104948)">
+                    </g>
+                    <text x="661.786px" y="2149.105px" style="font-family:'BanglaMN-Bold', 'Bangla MN';font-size:811.59px;">RPS</text>
+                </g>
+                <g transform="matrix(0.933833,0,0,0.728514,21264.932426,947.115965)">
+                    <path d="M36455.386,4342.705L58228.942,4342.705" style="fill:none;stroke:rgb(187,73,0);stroke-width:8.33px;"/>
+                </g>
+                <g transform="matrix(0.933833,0,0,0.728514,21264.932426,947.115965)">
+                    <path d="M36455.386,4342.705L58228.942,4342.705" style="fill:none;stroke:rgb(187,73,0);stroke-width:8.33px;"/>
+                </g>
+                <g transform="matrix(3.576727,0,0,2.790324,-167485.164338,-70137.036355)">
+                    <text x="56991.877px" y="29093.112px" style="font-family:'Helvetica';font-size:416.667px;">SA<tspan x="57516.819px 57794.65px 58118.665px 58234.347px " y="29093.112px 29093.112px 29093.112px 29093.112px ">VOIR</tspan></text>
+                    <text x="58643.118px" y="29093.112px" style="font-family:'Helvetica';font-size:416.667px;">F<tspan x="58874.766px 59152.598px 59268.279px 59569.101px " y="29093.112px 29093.112px 29093.112px 29093.112px ">AIRE</tspan></text>
+                    <text x="59954.882px" y="29093.112px" style="font-family:'Helvetica';font-size:416.667px;">LA</text>
+                    <text x="60572.312px" y="29093.112px" style="font-family:'Helvetica';font-size:416.667px;">DI<tspan x="60988.815px 61243.25px 61497.684px 61775.516px 62076.337px 62354.169px 62654.99px " y="29093.112px 29093.112px 29093.112px 29093.112px 29093.112px 29093.112px 29093.112px ">FFERENC</tspan>E</text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
