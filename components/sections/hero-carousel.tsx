@@ -53,20 +53,20 @@ export function HeroCarousel() {
         </div>
       ))}
 
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(10,17,48,.96)_0%,rgba(16,23,53,.86)_44%,rgba(16,23,53,.42)_72%,rgba(16,23,53,.6)_100%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(239,63,97,.2),transparent_30%),linear-gradient(0deg,rgba(8,14,38,.55),transparent_45%)]" />
+      <div className="absolute inset-0 bg-brand-950/45" />
+      <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(8,14,38,.32),transparent_55%)]" />
 
       <div className="absolute bottom-6 right-6 z-20 flex items-center gap-2 sm:bottom-8 sm:right-8">
-        <div className="mr-1 hidden rounded-full border border-white/20 bg-[#101735]/55 px-4 py-2 text-xs font-semibold text-white backdrop-blur-md sm:block">
+        <div className="mr-1 hidden rounded-full border border-white/20 bg-brand-950/55 px-4 py-2 text-xs font-semibold text-white backdrop-blur-md sm:block">
           {slides[activeSlide].label}
         </div>
-        <button type="button" onClick={() => changeSlide(-1)} className="grid size-10 place-items-center rounded-full border border-white/25 bg-[#101735]/55 text-white backdrop-blur-md transition hover:bg-white/15" aria-label="Image précédente">
+        <button type="button" onClick={() => changeSlide(-1)} className="grid size-10 place-items-center rounded-full border border-white/25 bg-brand-950/55 text-white backdrop-blur-md transition hover:bg-white/15" aria-label="Image précédente">
           <ChevronLeft size={18} />
         </button>
-        <button type="button" onClick={() => setIsPaused((current) => !current)} className="grid size-10 place-items-center rounded-full border border-white/25 bg-[#101735]/55 text-white backdrop-blur-md transition hover:bg-white/15" aria-label={isPaused ? 'Reprendre le diaporama' : 'Mettre le diaporama en pause'}>
+        <button type="button" onClick={() => setIsPaused((current) => !current)} className="grid size-10 place-items-center rounded-full border border-white/25 bg-brand-950/55 text-white backdrop-blur-md transition hover:bg-white/15" aria-label={isPaused ? 'Reprendre le diaporama' : 'Mettre le diaporama en pause'}>
           {isPaused ? <Play size={16} /> : <Pause size={16} />}
         </button>
-        <button type="button" onClick={() => changeSlide(1)} className="grid size-10 place-items-center rounded-full border border-white/25 bg-[#101735]/55 text-white backdrop-blur-md transition hover:bg-white/15" aria-label="Image suivante">
+        <button type="button" onClick={() => changeSlide(1)} className="grid size-10 place-items-center rounded-full border border-white/25 bg-brand-950/55 text-white backdrop-blur-md transition hover:bg-white/15" aria-label="Image suivante">
           <ChevronRight size={18} />
         </button>
       </div>

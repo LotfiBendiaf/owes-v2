@@ -10,7 +10,7 @@ const trustItems = [
 
 export function SiteFooter() {
   return (
-    <footer className="bg-[#090d1c] text-white">
+    <footer className="bg-brand-950 text-white">
       <div className="mx-auto max-w-7xl px-6 py-14 sm:py-16">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.35fr_.75fr_.75fr_1.15fr] lg:gap-12">
           <div>
@@ -33,7 +33,7 @@ export function SiteFooter() {
               <a href="mailto:contact@owes.dz" className="flex items-center gap-3 hover:text-rose-400"><Mail size={16} className="text-rose-500" />contact@owes.dz</a>
               <p className="flex items-center gap-3"><Phone size={16} className="text-rose-500" />+213 (0) 00 00 00 00</p>
               <p className="flex items-start gap-3"><Clock size={16} className="mt-0.5 text-rose-500" />Dim. - Jeu. : 08h - 17h</p>
-              <Link href="/contact" className="mt-2 inline-flex w-fit items-center gap-2 rounded-full bg-rose-500 px-5 py-3 font-bold text-[#17204f] transition hover:bg-rose-400">Nous contacter <ArrowRight size={16} /></Link>
+              <Link href="/contact" className="mt-2 inline-flex w-fit items-center gap-2 rounded-full bg-rose-500 px-5 py-3 font-bold text-brand-950 transition hover:bg-rose-400">Nous contacter <ArrowRight size={16} /></Link>
             </div>
           </div>
         </div>
