@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, Clock, Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
+import { OwesLogoSlog } from "@/components/owes-logo";
 
 const trustItems = [
   { label: "Equipe locale", icon: MapPin },
@@ -15,7 +15,7 @@ export function SiteFooter() {
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.35fr_.75fr_.75fr_1.15fr] lg:gap-12">
           <div>
             <Link href="/" className="inline-flex rounded-xl bg-white px-4 py-3 shadow-sm">
-              <Image src="/legacy/images/owes-logo2.png" alt="OWES - Office Web et Service" width={205} height={54} className="h-12 w-auto object-contain" />
+              <OwesLogoSlog className="h-12" />
             </Link>
             <p className="mt-5 max-w-sm text-sm leading-7 text-slate-300">Office et Web Services accompagne les entrepreneurs algériens avec des espaces, une adresse professionnelle et des services conçus pour avancer.</p>
             <div className="mt-7 flex flex-wrap gap-2.5">

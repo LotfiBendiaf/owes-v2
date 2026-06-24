@@ -10,14 +10,14 @@ const Hero = () => {
         <HeroCarousel />
         <div className="relative flex min-h-[76vh] items-center justify-center px-7 pb-24 pt-16 sm:px-12 lg:px-16">
           <div className="relative z-10 flex max-w-3xl flex-col items-center text-center">
-            <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-2 text-xs font-semibold text-white backdrop-blur">
+            <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/10 px-3.5 py-2 text-xs font-semibold text-white backdrop-blur">
               <span className="size-2 animate-pulse rounded-full bg-rose-500" />
               L&apos;espace professionnel qui avance avec vous
             </div>
             <h1 className="text-4xl font-extrabold leading-[1.06] tracking-[-0.035em] text-white sm:text-5xl lg:text-6xl">
               DONNEZ A VOTRE PROJET <span className="text-rose-500">UNE BASE SOLIDE.</span>
             </h1>
-            <p className="mt-6 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
+            <p className="mt-6 max-w-2xl text-base leading-7 text-white sm:text-lg">
               OWES réunit domiciliation, coworking, salles de réunion et formation au même endroit, avec une équipe qui connaît les réalités des entrepreneurs en Algérie.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
@@ -29,9 +29,9 @@ const Hero = () => {
               </Link>
             </div>
             <div className="mt-11 grid w-full max-w-xl grid-cols-3 gap-5 border-t border-white/20 pt-6">
-              <div><p className="text-2xl font-extrabold text-white">4</p><p className="mt-1 text-xs text-slate-400">services essentiels</p></div>
-              <div><p className="text-2xl font-extrabold text-white">100%</p><p className="mt-1 text-xs text-slate-400">flexible</p></div>
-              <div><p className="text-2xl font-extrabold text-white">1</p><p className="mt-1 text-xs text-slate-400">équipe à vos côtés</p></div>
+              <div><p className="text-2xl font-extrabold text-white">4</p><p className="mt-1 text-xs text-white">services essentiels</p></div>
+              <div><p className="text-2xl font-extrabold text-white">100%</p><p className="mt-1 text-xs text-white">flexible</p></div>
+              <div><p className="text-2xl font-extrabold text-white">1</p><p className="mt-1 text-xs text-white">équipe à vos côtés</p></div>
             </div>
             <div className="mt-7 inline-flex items-center gap-3 rounded-2xl border border-white/15 bg-brand-950/40 px-4 py-3 text-white backdrop-blur-md">
               <span className="grid size-9 place-items-center rounded-full bg-rose-500 text-white"><MapPin size={16} /></span>
