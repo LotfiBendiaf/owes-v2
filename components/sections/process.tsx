@@ -95,7 +95,7 @@ export default function Process() {
           </ul>
           <Link
             href="/contact"
-            className="mt-10 inline-flex items-center gap-2 rounded-full bg-rose-500 px-6 py-3 text-sm font-bold text-brand-950 transition hover:bg-rose-400"
+            className="mt-10 inline-flex items-center gap-2 rounded-full bg-rose-500 px-6 py-3 text-sm font-bold text-white transition hover:bg-rose-400"
           >
             Rencontrer notre équipe <ArrowRight size={16} />
           </Link>

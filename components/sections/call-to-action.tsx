@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function CallToAction() {
   return (
     <section className="px-6 pb-20">
-      <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-7 rounded-4xl bg-rose-500 p-8 text-brand-950 sm:p-10 lg:flex-row lg:items-center">
+      <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-7 rounded-4xl bg-rose-100 p-8 text-brand-950 sm:p-10 lg:flex-row lg:items-center">
         <div>
           <p className="text-xs font-bold uppercase tracking-[0.22em]">
             Votre prochaine étape
