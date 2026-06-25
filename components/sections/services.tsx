@@ -3,6 +3,7 @@ import {
   Building2,
   CalendarDays,
   GraduationCap,
+  MapPinSearch,
   Users,
 } from "lucide-react";
 import Image from "next/image";
@@ -69,7 +70,7 @@ export default function Services() {
         <div className="mt-12 grid gap-5 lg:grid-cols-[1.2fr_.8fr]">
           <Link
             href={domiciliationService.href}
-            className="group relative isolate flex min-h-[32rem] overflow-hidden rounded-lg border border-white/70 bg-brand-950 p-7 text-white shadow-[0_24px_70px_color-mix(in_srgb,var(--color-brand-950)_16%,transparent)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_32px_90px_color-mix(in_srgb,var(--color-brand-950)_24%,transparent)]"
+            className="group relative isolate flex min-h-[32rem] flex-col justify-between overflow-hidden rounded-lg border border-white/80 bg-brand-950 p-7 text-white shadow-[0_24px_70px_color-mix(in_srgb,var(--color-brand-950)_16%,transparent)] ring-1 ring-brand-950/5 transition duration-300 hover:-translate-y-1 hover:shadow-[0_32px_90px_color-mix(in_srgb,var(--color-brand-950)_24%,transparent)]"
           >
             <Image
               src={domiciliationService.image}
@@ -78,18 +79,19 @@ export default function Services() {
               sizes="(max-width: 1024px) 100vw, 58vw"
               className="-z-20 object-cover transition duration-700 group-hover:scale-105"
             />
-            <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,color-mix(in_srgb,var(--color-brand-950)_92%,transparent)_0%,color-mix(in_srgb,var(--color-brand-950)_62%,transparent)_48%,color-mix(in_srgb,var(--color-brand-950)_22%,transparent)_100%)]" />
-
+            <div className="absolute inset-0 -z-10 bg-black/55 transition duration-300 group-hover:bg-black/50" />
+            <div className="absolute inset-0 -z-10 bg-linear-to-t from-black/35 via-transparent to-white/10" />
 
             <div className="flex items-start justify-between gap-4">
-              <span className="grid size-14 place-items-center rounded-lg bg-white/95 text-brand-500 shadow-lg shadow-brand-950/15 transition group-hover:bg-rose-500 group-hover:text-white">
-                <Building2 size={26} />
-              </span>
-              <span className="rounded-full border border-white/20 bg-white/15 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white backdrop-blur-md">
+              <span className="flex items-center gap-2 rounded-full border border-white/20 bg-white/15 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white text-nowrap backdrop-blur-md">
+                <MapPinSearch
+                  size={14}
+                  className="transition duration-300 group-hover:text-rose-500"
+                />
                 {domiciliationService.tag}
               </span>
             </div>
-            <div className="mt-auto">
+            <div>
               <h3 className="max-w-xl text-3xl font-extrabold tracking-tight sm:text-4xl">
                 {domiciliationService.title}
               </h3>
@@ -110,6 +112,7 @@ export default function Services() {
                 Voir les plans <ArrowRight size={16} />
               </span>
             </div>
+
           </Link>
 
           <div className="grid gap-5">
@@ -117,7 +120,7 @@ export default function Services() {
               <Link
                 key={service.title}
                 href={service.href}
-                className="group relative isolate flex min-h-40 overflow-hidden rounded-lg border border-white/70 bg-brand-950 p-5 text-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_48px_color-mix(in_srgb,var(--color-brand-950)_18%,transparent)]"
+                className="group relative isolate flex min-h-40 overflow-hidden rounded-lg border border-white/80 bg-brand-950 p-5 text-white shadow-sm ring-1 ring-brand-950/5 transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_48px_color-mix(in_srgb,var(--color-brand-950)_18%,transparent)]"
               >
                 <Image
                   src={service.image}
@@ -126,11 +129,11 @@ export default function Services() {
                   sizes="(max-width: 1024px) 100vw, 38vw"
                   className="-z-20 object-cover transition duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,color-mix(in_srgb,var(--color-brand-950)_86%,transparent)_0%,color-mix(in_srgb,var(--color-brand-950)_62%,transparent)_54%,color-mix(in_srgb,var(--color-brand-950)_24%,transparent)_100%)]" />
-                <div className="absolute inset-0 -z-10 bg-gradient-to-t from-brand-950/70 via-transparent to-white/5" />
+                <div className="absolute inset-0 -z-10 bg-black/60 transition duration-300 group-hover:bg-black/40" />
+                <div className="absolute inset-0 -z-10 bg-linear-to-r from-black/25 via-transparent to-white/10" />
 
-                <span className="grid size-12 shrink-0 place-items-center rounded-lg bg-white/95 text-brand-500 shadow-lg shadow-brand-950/15 transition group-hover:bg-rose-500 group-hover:text-white">
-                  <Icon size={22} />
+                <span className="grid size-10 place-items-center rounded-lg bg-white/20 text-brand-500 transition group-hover:text-white">
+                  <Icon size={14} />
                 </span>
                 <div className="ml-5 flex min-w-0 flex-1 flex-col">
                   <span className="text-[10px] font-bold uppercase tracking-widest text-rose-200">
