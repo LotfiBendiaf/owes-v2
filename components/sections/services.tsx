@@ -70,7 +70,7 @@ export default function Services() {
         <div className="mt-12 grid gap-5 lg:grid-cols-[1.2fr_.8fr]">
           <Link
             href={domiciliationService.href}
-            className="group relative isolate flex min-h-[32rem] flex-col justify-between overflow-hidden rounded-lg border border-white/80 bg-brand-950 p-7 text-white shadow-[0_24px_70px_color-mix(in_srgb,var(--color-brand-950)_16%,transparent)] ring-1 ring-brand-950/5 transition duration-300 hover:-translate-y-1 hover:shadow-[0_32px_90px_color-mix(in_srgb,var(--color-brand-950)_24%,transparent)]"
+            className="group relative isolate flex min-h-128 flex-col justify-between overflow-hidden rounded-lg border border-white/80 bg-brand-950 p-7 text-white shadow-[0_24px_70px_color-mix(in_srgb,var(--color-brand-950)_16%,transparent)] ring-1 ring-brand-950/5 transition duration-300 hover:-translate-y-1 hover:shadow-[0_32px_90px_color-mix(in_srgb,var(--color-brand-950)_24%,transparent)]"
           >
             <Image
               src={domiciliationService.image}
