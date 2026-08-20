@@ -62,12 +62,13 @@ export default function DomiciliationPlans() {
           {plans.map((plan) => (
             <article
               key={plan.title}
-              className={`flex min-h-96 flex-col rounded-lg border bg-surface-subtle p-6 shadow-sm ${
+              className={`flex min-h-96 flex-col rounded-4xl border bg-slate-50 p-2 shadow-sm ${
                 plan.highlighted
-                  ? "border-brand-500 shadow-[0_24px_70px_color-mix(in_srgb,var(--color-brand-950)_12%,transparent)]"
+                  ? "border-brand-500 border-2 shadow-[0_24px_70px_color-mix(in_srgb,var(--color-brand-950)_12%,transparent)]"
                   : "border-stone-200"
               }`}
             >
+              <div className="flex flex-1 flex-col gap-6 bg-white shadow p-5 rounded-3xl">
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand-500">
@@ -84,19 +85,7 @@ export default function DomiciliationPlans() {
                 ) : null}
               </div>
 
-              <ul className="mt-7 flex flex-1 flex-col gap-3 text-sm leading-6 text-slate-600">
-                {plan.features.map((feature) => (
-                  <li key={feature} className="flex gap-3">
-                    <CheckCircle2
-                      className="mt-0.5 size-5 shrink-0 text-brand-500"
-                      aria-hidden="true"
-                    />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="mt-8">
+                            <div className="mt-8">
                 <p className="text-sm font-semibold text-slate-500">
                   {plan.prefix ?? "Prix mensuel"}
                 </p>
@@ -108,10 +97,25 @@ export default function DomiciliationPlans() {
                   </span>
                 </p>
               </div>
+              </div>
+
+              <ul className="mt-7 flex flex-1 flex-col gap-3 text-sm p-5 leading-6 text-slate-600">
+                {plan.features.map((feature) => (
+                  <li key={feature} className="flex gap-3">
+                    <CheckCircle2
+                      className="mt-0.5 size-5 shrink-0 text-brand-500"
+                      aria-hidden="true"
+                    />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+
 
               <Link
                 href={plan.href}
-                className="mt-6 inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-brand-500 px-5 text-sm font-bold text-white transition hover:bg-brand-950"
+                className="mt-6 m-5 inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-brand-500 px-5 text-sm font-bold text-white transition hover:bg-brand-950"
               >
                 Choisir l&apos;offre <ArrowRight size={16} />
               </Link>

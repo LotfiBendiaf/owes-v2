@@ -4,6 +4,7 @@ import ActivityStrip from "@/components/sections/activity-strip";
 import CallToAction from "@/components/sections/call-to-action";
 import DomiciliationPlans from "@/components/sections/domiciliation-plans";
 import Hero from "@/components/sections/hero";
+import FindUs from "@/components/sections/find-us";
 import Process from "@/components/sections/process";
 import Services from "@/components/sections/services";
 import WhyUs from "@/components/sections/why-us";
@@ -19,6 +20,7 @@ export default function Home() {
         <WhyUs />
         <DomiciliationPlans />
         <Process />
+        <FindUs />
         <CallToAction />
       </main>
       <SiteFooter />
