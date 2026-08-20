@@ -2,7 +2,6 @@ import { execFileSync } from "node:child_process";
 import { copyFileSync, existsSync, mkdirSync } from "node:fs";
 import { basename, dirname, join, resolve } from "node:path";
 import { type PaymentMethod, type PaymentStatus, type Role } from "@prisma/client";
-import { hashPassword } from "better-auth/crypto";
 import { slugify } from "../lib/utils";
 import { prisma } from "../lib/prisma";
 
@@ -47,6 +46,7 @@ async function seedCatalog() {
   const services = [
     ["Salle de réunion", "meeting", "MEETING", 5_000], ["Coworking", "coworking", "COWORKING", 1_000],
     ["Formation", "training", "TRAINING", 9_000], ["Domiciliation", "domiciliation", "DOMICILIATION", 15_000],
+    ["Création de sites web", "website-building", "WEBSITE_BUILDING", 80_000],
   ] as const;
   for (const [name, slug, kind, basePrice] of services) await prisma.service.upsert({ where: { slug }, update: { name, kind, basePrice }, create: { name, slug, kind, basePrice, description: `Service ${name.toLowerCase()} OWES`, categoryId: category.id } });
 }
@@ -57,11 +57,7 @@ async function importUsers() {
   for (const old of oldUsers) {
     const email = old.email.trim().toLowerCase() || `${old.username.toLowerCase()}@legacy.owes.local`;
     const role: Role = old.is_superuser || old.is_staff ? "ADMIN" : "CLIENT";
-    const user = await prisma.user.upsert({ where: { email }, update: { legacyId: old.id, role, active: Boolean(old.is_active) }, create: { name: `${old.first_name} ${old.last_name}`.trim() || old.username, email, emailVerified: false, image: asset(old.photo), phone: old.numero_telephone, legacyId: old.id, legacyUsername: old.username, role, active: Boolean(old.is_active), createdAt: new Date(old.date_joined) } });
-    if (process.env.LEGACY_USER_TEMP_PASSWORD) {
-      const password = await hashPassword(process.env.LEGACY_USER_TEMP_PASSWORD);
-      await prisma.account.upsert({ where: { providerId_accountId: { providerId: "credential", accountId: user.id } }, update: { password }, create: { id: `legacy-credential-${user.id}`, providerId: "credential", accountId: user.id, userId: user.id, password } });
-    }
+    await prisma.user.upsert({ where: { email }, update: { legacyId: old.id, role, active: Boolean(old.is_active) }, create: { name: `${old.first_name} ${old.last_name}`.trim() || old.username, email, emailVerified: false, image: asset(old.photo), phone: old.numero_telephone, legacyId: old.id, legacyUsername: old.username, role, active: Boolean(old.is_active), createdAt: new Date(old.date_joined) } });
   }
   return oldUsers.length;
 }
@@ -120,7 +116,7 @@ async function importContacts() {
 async function main() {
   if (!existsSync(dbPath)) throw new Error(`Legacy database not found: ${dbPath}`);
   await seedCatalog();
-  const summary = { users: await importUsers(), requests: await importRequests(), articles: await importArticles(), contacts: await importContacts(), passwordAction: process.env.LEGACY_USER_TEMP_PASSWORD ? "Temporary Better Auth password assigned; require rotation." : "Imported Django users need a Better Auth password." };
+  const summary = { users: await importUsers(), requests: await importRequests(), articles: await importArticles(), contacts: await importContacts(), passwordAction: "Imported Django users require a unique password-setup or reset flow; no credential was created." };
   await prisma.migrationRun.upsert({ where: { source: dbPath }, update: { importedAt: new Date(), summary }, create: { source: dbPath, summary } });
   console.log(JSON.stringify(summary, null, 2));
 }

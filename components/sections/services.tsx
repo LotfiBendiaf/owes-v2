@@ -2,6 +2,7 @@ import {
   ArrowRight,
   Building2,
   CalendarDays,
+  Code2,
   GraduationCap,
   MapPinSearch,
   Users,
@@ -42,6 +43,14 @@ const services = [
     tag: "Vos compétences",
     image: "/office/formation.jpg",
   },
+  {
+    icon: Code2,
+    title: "Création de sites web",
+    text: "Un site vitrine, professionnel ou e-commerce pensé pour présenter votre activité et convertir vos visiteurs.",
+    href: "/services#website-building",
+    tag: "Votre présence en ligne",
+    image: "/office/bureau_prevatif.jpg",
+  },
 ];
 
 const [domiciliationService, ...secondaryServices] = services;
@@ -57,7 +66,7 @@ export default function Services() {
               Tout pour avancer
             </p>
             <h2 className="mt-3 max-w-xl text-3xl font-extrabold tracking-tight text-brand-950 sm:text-4xl">
-              Quatre services, chacun à sa place
+              Cinq services pour faire avancer votre activité
             </h2>
           </div>
           <p className="max-w-2xl leading-7 text-slate-600 lg:justify-self-end">

@@ -5,7 +5,7 @@ import { z } from "zod";
 import { requireRole } from "@/lib/authorization";
 import { prisma } from "@/lib/prisma";
 
-const updateUserSchema = z.object({ userId: z.string().min(1), role: z.enum(["ADMIN", "EXPERT", "CLIENT"]), active: z.enum(["true", "false"]) });
+const updateUserSchema = z.object({ userId: z.string().min(1), role: z.enum(["ADMIN", "CLIENT"]), active: z.enum(["true", "false"]) });
 
 export async function updateUserAccess(formData: FormData) {
   const session = await requireRole("ADMIN");

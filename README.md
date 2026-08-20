@@ -10,16 +10,16 @@ Use Node 22.14 or newer, then install dependencies and generate Prisma Client:
 
 ```bash
 nvm use
-npm install
-npm run db:generate
+pnpm install
+pnpm db:generate
 ```
 
 Create `.env.local` from `.env.example`, provide the Neon and Better Auth values, then run:
 
 ```bash
-npm run db:migrate
-npm run db:import
-npm run dev
+pnpm db:migrate
+pnpm db:import
+pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
@@ -27,7 +27,7 @@ Open [http://localhost:3000](http://localhost:3000).
 ## Quality checks
 
 ```bash
-npm run lint
-npm run typecheck
-npm run build
+pnpm lint
+pnpm typecheck
+pnpm build
 ```

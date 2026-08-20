@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: { default: "OWES | Votre partenaire professionnel", template: "%s | OWES" },
-  description: "Domiciliation, coworking, formation et accompagnement professionnel en Algérie.",
+  description: "Domiciliation, création de sites web, coworking, salles de réunion et formation professionnelle en Algérie.",
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml", media: "(prefers-color-scheme: light)" },

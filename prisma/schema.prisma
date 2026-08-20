@@ -8,7 +8,6 @@ datasource db {
 
 enum Role {
   ADMIN
-  EXPERT
   CLIENT
 }
 
@@ -17,7 +16,7 @@ enum RequestKind {
   COWORKING
   TRAINING
   DOMICILIATION
-  CONSULTING
+  WEBSITE_BUILDING
 }
 
 enum RequestStatus {
@@ -58,9 +57,7 @@ model User {
   sessions      Session[]
   accounts      Account[]
   clientProfile ClientProfile?
-  expertProfile ExpertProfile?
   requests      ServiceRequest[] @relation("ClientRequests")
-  assignedRequests ServiceRequest[] @relation("ExpertRequests")
   messages      ChatMessage[]
   notifications Notification[]
   files         FileAsset[]
@@ -119,17 +116,6 @@ model ClientProfile {
   user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
-model ExpertProfile {
-  id           String   @id @default(cuid())
-  userId       String   @unique
-  title        String
-  bio          String?
-  specialties String[]
-  location     String?
-  available    Boolean  @default(true)
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
-
 model Category {
   id          String    @id @default(cuid())
   name        String
@@ -169,8 +155,6 @@ model ServiceRequest {
   updatedAt     DateTime      @updatedAt
   clientId      String?
   client        User?         @relation("ClientRequests", fields: [clientId], references: [id], onDelete: SetNull)
-  expertId      String?
-  expert        User?         @relation("ExpertRequests", fields: [expertId], references: [id], onDelete: SetNull)
   serviceId     String?
   service       Service?      @relation(fields: [serviceId], references: [id], onDelete: SetNull)
   payments      Payment[]
@@ -179,7 +163,6 @@ model ServiceRequest {
 
   @@unique([legacyTable, legacyId])
   @@index([clientId, status])
-  @@index([expertId, status])
 }
 
 model Payment {

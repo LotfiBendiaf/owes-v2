@@ -18,7 +18,7 @@ const Hero = () => {
               DONNEZ A VOTRE PROJET <span className="text-rose-500">UNE BASE SOLIDE.</span>
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-7 text-white sm:text-lg">
-              OWES réunit domiciliation, coworking, salles de réunion et formation au même endroit, avec une équipe qui connaît les réalités des entrepreneurs en Algérie.
+              OWES réunit domiciliation, création de sites web, coworking, salles de réunion et formation, avec une équipe qui connaît les réalités des entrepreneurs en Algérie.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <Link href="/services" className="inline-flex h-12 items-center gap-2 rounded-full bg-white px-6 text-sm font-bold uppercase text-brand-500 transition hover:bg-slate-100">
@@ -29,7 +29,7 @@ const Hero = () => {
               </Link>
             </div>
             <div className="mt-11 grid w-full max-w-xl grid-cols-3 gap-5 border-t border-white/20 pt-6">
-              <div><p className="text-2xl font-extrabold text-white">4</p><p className="mt-1 text-xs text-white">services essentiels</p></div>
+              <div><p className="text-2xl font-extrabold text-white">5</p><p className="mt-1 text-xs text-white">services essentiels</p></div>
               <div><p className="text-2xl font-extrabold text-white">100%</p><p className="mt-1 text-xs text-white">flexible</p></div>
               <div><p className="text-2xl font-extrabold text-white">1</p><p className="mt-1 text-xs text-white">équipe à vos côtés</p></div>
             </div>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Building2, CalendarDays, GraduationCap, Users } from "lucide-react";
+import { Building2, CalendarDays, Code2, GraduationCap, Users } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ServiceRequestForm } from "@/components/service-request-form";
@@ -14,6 +14,7 @@ const items = [
   { id: "coworking", icon: Users, title: "Coworking", text: "Postes flexibles pour une journée, une semaine ou un mois.", price: pricing.coworking.day.small },
   { id: "meeting", icon: CalendarDays, title: "Salle de réunion", text: "Une salle équipée à la demi-journée ou à la journée.", price: pricing.meeting.halfDay },
   { id: "training", icon: GraduationCap, title: "Formation", text: "Formations professionnelles ciblées et opérationnelles.", price: pricing.trainingDay },
+  { id: "website-building", icon: Code2, title: "Création de sites web", text: "Sites vitrines, professionnels et e-commerce conçus pour votre activité.", price: pricing.websiteBuilding.starter },
 ];
 
 export default function ServicesPage() {

@@ -3,6 +3,7 @@ const activities = [
   "Espace",
   "Réunion",
   "Formation",
+  "Web",
   "Accompagnement",
 ];
 
