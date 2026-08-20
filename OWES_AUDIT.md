@@ -319,7 +319,7 @@ The key boundary should be by business feature, not by technical ceremony:
 
 - [x] Patch Next.js and Better Auth.
 - [x] Replace shared imported passwords with identity-only import; no shared credential is created. A unique account-setup flow remains Phase 2 work.
-- [ ] Invalidate or review previously imported shared credentials.
+- [x] Review imported legacy credentials. The production query returned zero legacy users with credential accounts on 2026-08-21.
 - [x] Fail builds/deployments when required secrets and URLs are missing.
 - [x] Add initial in-process abuse controls to public mutations and explicit Better Auth rate limits. Durable distributed limiting remains production-hardening work.
 - [x] Make request validation discriminated and reject invalid dates/options.
