@@ -331,11 +331,11 @@ Risk: medium, primarily around auth upgrades and legacy accounts.
 
 ### Phase 1 — Architecture stabilization
 
-- [ ] Introduce feature-level request/user query and action modules.
-- [ ] Centralize authorization policies, error types, environment validation, and status transitions.
-- [ ] Add audit events for role/access/request/payment operations.
-- [ ] Establish canonical pricing and attach new requests to services.
-- [ ] Add CI for lint, typecheck, build, tests, dependency audit, and migration validation.
+- [x] Introduce feature-level request/user query, schema, catalog, policy, and status modules.
+- [x] Centralize authorization policies, error types, environment validation, and status transitions.
+- [x] Add database-backed audit events for request creation/status and user access changes. Payment audit events will be added with payment mutations.
+- [x] Establish canonical request quoting and attach new requests to seeded active services.
+- [x] Add CI for lint, typecheck, build, dependency audit, and migration validation. Automated tests are expanded in Phase 5.
 
 Expected impact: creates a safe base for further product work.
 

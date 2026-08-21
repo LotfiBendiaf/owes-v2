@@ -13,14 +13,14 @@ export async function getSession() {
 export async function requireUser() {
   const session = await getSession();
   if (!session?.user) redirect("/login");
-  const access = await prisma.user.findUnique({ where: { id: session.user.id }, select: { active: true } });
+  const access = await prisma.user.findUnique({ where: { id: session.user.id }, select: { active: true, role: true } });
   if (!access?.active) redirect("/login?error=inactive");
-  return session;
+  return { ...session, user: { ...session.user, role: access.role } };
 }
 
 export async function requireRole(...roles: Role[]) {
   const session = await requireUser();
-  const role = session.user.role as Role;
+  const role = session.user.role;
   if (!roles.includes(role)) redirect("/dashboard");
   return session;
 }
