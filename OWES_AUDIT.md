@@ -367,9 +367,9 @@ Risk: low–medium.
 
 ### Phase 4 — UI/UX refinement
 
-- [ ] Add mobile dashboard navigation, active states, breadcrumbs, status vocabulary, skeletons, and error boundaries.
-- [ ] Improve form accessibility, conditional fields, price preview, confirmations, and responsive data presentation.
-- [ ] Add bulk actions only after real administrative usage demonstrates a need.
+- [x] Add native-dialog mobile dashboard navigation, active states, breadcrumbs, localized status vocabulary, skeletons, and error boundaries.
+- [x] Improve form accessibility, conditional fields, live price preview, cancellation confirmation, reduced-motion behavior, and responsive data presentation.
+- [x] Deliberately defer bulk actions until real administrative usage demonstrates a need; current paginated workflows do not justify the added risk.
 
 Expected impact: materially improves daily usability.
 
