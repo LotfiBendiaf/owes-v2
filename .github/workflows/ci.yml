@@ -10,9 +10,22 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
-      DATABASE_URL: postgresql://invalid:invalid@localhost:5432/owes
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/owes
       BETTER_AUTH_SECRET: ci-only-secret-that-is-at-least-thirty-two-characters
-      BETTER_AUTH_URL: http://localhost:3000
+      BETTER_AUTH_URL: http://127.0.0.1:3100
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_DB: owes
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d owes"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -24,8 +37,13 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm db:generate
+      - run: pnpm db:migrate
+      - run: pnpm db:seed
       - run: pnpm lint
       - run: pnpm typecheck
+      - run: pnpm test:run
       - run: pnpm db:validate
       - run: pnpm build
       - run: pnpm audit --prod --audit-level critical
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm test:e2e

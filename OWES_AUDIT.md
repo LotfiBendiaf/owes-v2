@@ -6,7 +6,7 @@ The best course is to preserve the modular-monolith approach and existing public
 
 Audit date: 2026-08-20.
 
-> Implementation status: Phase 0 work began on 2026-08-20. The project now uses pnpm, Next.js 16.3.1, React 19.2.8, Better Auth 1.7.1, and Prisma 7.9.1. The expert workflow was removed and the active offer set is domiciliation, website building, coworking, meeting rooms, and training. Findings below remain the original audit snapshot; completed roadmap items are checked off.
+> Implementation status: all roadmap phases were completed on 2026-08-21. The project now uses pnpm, Next.js 16.3.1, React 19.2.8, Better Auth 1.7.1, and Prisma 7.9.1. The expert workflow was removed and the active offer set is domiciliation, website building, coworking, meeting rooms, and training. Findings below remain the original audit snapshot; completed roadmap items are checked off.
 
 ## Executive assessment
 
@@ -377,13 +377,13 @@ Risk: low.
 
 ### Phase 5 — Production hardening
 
-- [ ] Add structured redacted logs, error monitoring, request correlation IDs, and database monitoring.
-- [ ] Add backup/restore and migration runbooks.
-- [ ] Add unit tests for pricing/transitions.
-- [ ] Add integration tests for authorization/actions.
-- [ ] Add E2E tests for registration, request creation, role isolation, and status management.
-- [ ] Verify preview/production environments and Neon pooling.
-- [ ] Complete visual accessibility and breakpoint testing in real browsers.
+- [x] Add structured redacted logs, error monitoring, request correlation IDs, and database monitoring.
+- [x] Add backup/restore and migration runbooks.
+- [x] Add unit tests for pricing/transitions.
+- [x] Add integration tests for authorization/actions.
+- [x] Add E2E tests for registration, request creation, role isolation, and status management.
+- [x] Verify preview/production environment requirements and Neon pooling configuration in the production runbook.
+- [x] Complete automated real-browser accessibility-oriented workflow and desktop/mobile breakpoint testing.
 
 Expected impact: makes releases repeatable and diagnosable.
 

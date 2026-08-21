@@ -43,6 +43,7 @@
   --color-surface: #ffffff;
   --color-surface-subtle: #f8fafc;
   --color-surface-muted: #f1f5f9;
+  --color-slate-500: #475569;
   --font-sans: var(--font-geist-sans, "OWES Inter"), system-ui, sans-serif;
   --font-mono: var(--font-geist-mono, ui-monospace), monospace;
   --spacing-section: 6rem;

@@ -29,5 +29,9 @@ Open [http://localhost:3000](http://localhost:3000).
 ```bash
 pnpm lint
 pnpm typecheck
+pnpm test:run
 pnpm build
+pnpm test:e2e
 ```
+
+Production deployment, Neon pooling, monitoring, and recovery procedures are documented in [docs/PRODUCTION.md](docs/PRODUCTION.md).
