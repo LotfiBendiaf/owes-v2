@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  allowedDevOrigins: ["127.0.0.1", "localhost", "https://owes-v2.vercel.app/login"],
+  allowedDevOrigins: ["127.0.0.1", "localhost", "https://owes-v2.vercel.app/"],
   async headers() {
     return [{
       source: "/(.*)",
