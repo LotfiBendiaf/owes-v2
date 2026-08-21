@@ -1,124 +1,31 @@
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 import Link from "next/link";
 import { pricing } from "@/lib/pricing";
 import { money } from "@/lib/utils";
 
 const plans = [
-  {
-    title: "Standard",
-    price: pricing.domiciliation.standard,
-    href: "/services#domiciliation",
-    features: [
-      "Bureau aménagé semi fermé.",
-      "Contrat notarié avec un paiement trimestriel.",
-      "Secrétariat.",
-      "Dépôt de déclaration fiscal-parafiscal.",
-      "Tarifs préférentiels sur la salle de réunion.",
-    ],
-  },
-  {
-    title: "Premium",
-    price: pricing.domiciliation.premium,
-    href: "/services#domiciliation",
-    highlighted: true,
-    features: [
-      "Bureau privatif et équipé avec chaises d'accueil.",
-      "Contrat notarié avec un paiement trimestriel.",
-      "Secrétariat.",
-      "Dépôt de déclaration fiscal-parafiscal.",
-      "Tarifs préférentiels sur la salle de réunion.",
-    ],
-  },
-  {
-    title: "Exclusive",
-    price: pricing.domiciliation.exclusive,
-    href: "/services#domiciliation",
-    prefix: "À partir de",
-    features: ["Domiciliation.", "Tenue de comptabilité."],
-  },
+  { title: "Standard", price: pricing.domiciliation.standard, features: ["Bureau aménagé semi fermé", "Contrat notarié trimestriel", "Secrétariat", "Déclaration fiscal-parafiscal", "Tarif préférentiel salle de réunion"] },
+  { title: "Premium", price: pricing.domiciliation.premium, highlighted: true, features: ["Bureau privatif et équipé", "Contrat notarié trimestriel", "Secrétariat", "Déclaration fiscal-parafiscal", "Tarif préférentiel salle de réunion"] },
+  { title: "Exclusive", price: pricing.domiciliation.exclusive, prefix: "À partir de", features: ["Domiciliation complète", "Tenue de comptabilité"] },
 ];
 
 export default function DomiciliationPlans() {
   return (
-    <section className="bg-white py-20 sm:py-24" id="domiciliation-plans">
+    <section className="bg-[#f4f0e7] py-20 sm:py-28" id="domiciliation-plans">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="grid gap-5 lg:grid-cols-[.9fr_1.1fr] lg:items-end">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.22em] text-brand-700">
-              Plans domiciliation
-            </p>
-            <h2 className="mt-3 max-w-xl text-3xl font-extrabold tracking-tight text-brand-950 sm:text-4xl">
-              Des formules de domiciliation prêtes à choisir
-            </h2>
-          </div>
-          <p className="max-w-2xl leading-7 text-slate-600 lg:justify-self-end">
-            Retrouvez les offres historiques OWES avec leurs avantages
-            essentiels, leurs modalités trimestrielles et l&apos;accès aux
-            services complémentaires du centre.
-          </p>
+        <div className="grid gap-8 border-b border-brand-950/15 pb-10 lg:grid-cols-[1fr_.65fr] lg:items-end">
+          <div><p className="font-mono text-xs uppercase tracking-[.2em] text-brand-700">Domiciliation — 03</p><h2 className="mt-5 max-w-3xl text-4xl font-extrabold leading-[.98] tracking-[-.045em] text-brand-950 sm:text-6xl">Trois formules. <span className="font-normal italic text-brand-500">Une adresse qui compte.</span></h2></div>
+          <p className="max-w-xl leading-7 text-slate-600 lg:justify-self-end">Des modalités trimestrielles et des services complémentaires pour choisir précisément le niveau d&apos;accompagnement dont vous avez besoin.</p>
         </div>
 
-        <div className="mt-12 grid gap-5 lg:grid-cols-3">
-          {plans.map((plan) => (
-            <article
-              key={plan.title}
-              className={`flex min-h-96 flex-col rounded-4xl border bg-slate-50 p-2 shadow-sm ${
-                plan.highlighted
-                  ? "border-brand-500 border-2 shadow-[0_24px_70px_color-mix(in_srgb,var(--color-brand-950)_12%,transparent)]"
-                  : "border-stone-200"
-              }`}
-            >
-              <div className="flex flex-1 flex-col gap-6 bg-white shadow p-5 rounded-3xl">
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand-500">
-                    Domiciliation
-                  </p>
-                  <h3 className="mt-2 text-2xl font-extrabold text-brand-950">
-                    {plan.title}
-                  </h3>
-                </div>
-                {plan.highlighted ? (
-                  <span className="rounded-full bg-brand-50 px-3 py-1 text-xs font-bold uppercase tracking-wider text-brand-700">
-                    Populaire
-                  </span>
-                ) : null}
-              </div>
-
-                            <div className="mt-8">
-                <p className="text-sm font-semibold text-slate-500">
-                  {plan.prefix ?? "Prix mensuel"}
-                </p>
-                <p className="mt-1 text-3xl font-black text-brand-950">
-                  {money(plan.price)}
-                  <span className="text-sm font-bold text-slate-500">
-                    {" "}
-                    / mois
-                  </span>
-                </p>
-              </div>
-              </div>
-
-              <ul className="mt-7 flex flex-1 flex-col gap-3 text-sm p-5 leading-6 text-slate-600">
-                {plan.features.map((feature) => (
-                  <li key={feature} className="flex gap-3">
-                    <CheckCircle2
-                      className="mt-0.5 size-5 shrink-0 text-brand-500"
-                      aria-hidden="true"
-                    />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
-
-
-              <Link
-                href={plan.href}
-                className="mt-6 m-5 inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-brand-500 px-5 text-sm font-bold text-white transition hover:bg-brand-950"
-              >
-                Choisir l&apos;offre <ArrowRight size={16} />
-              </Link>
+        <div className="divide-y divide-brand-950/15 border-b border-brand-950/15">
+          {plans.map((plan, index) => (
+            <article key={plan.title} className={`grid gap-7 py-9 lg:grid-cols-[4rem_.65fr_.55fr_1.2fr_auto] lg:items-start ${plan.highlighted ? "bg-[#e7edff] px-5 sm:px-7" : ""}`}>
+              <span className="font-mono text-xs text-slate-400">0{index + 1}</span>
+              <div><div className="flex items-center gap-3"><h3 className="text-3xl font-extrabold tracking-tight text-brand-950">{plan.title}</h3>{plan.highlighted && <span className="bg-brand-950 px-2 py-1 font-mono text-[9px] uppercase tracking-wider text-white">Le plus choisi</span>}</div><p className="mt-2 font-mono text-[10px] uppercase tracking-wider text-brand-700">Domiciliation OWES</p></div>
+              <div><p className="font-mono text-[10px] uppercase tracking-wider text-slate-500">{plan.prefix ?? "Prix mensuel"}</p><p className="mt-2 text-2xl font-extrabold text-brand-950">{money(plan.price)} <span className="text-xs font-medium text-slate-500">/ mois</span></p></div>
+              <ul className="grid gap-2 text-sm leading-5 text-slate-600 sm:grid-cols-2 lg:grid-cols-1">{plan.features.map((feature) => <li key={feature} className="flex gap-2"><Check size={13} className="mt-1 shrink-0 text-rose-600" />{feature}</li>)}</ul>
+              <Link href="/services#domiciliation" className="grid size-12 place-items-center border border-brand-950/20 text-brand-950 transition hover:bg-brand-950 hover:text-white" aria-label={`Choisir l'offre ${plan.title}`}><ArrowUpRight size={18} /></Link>
             </article>
           ))}
         </div>

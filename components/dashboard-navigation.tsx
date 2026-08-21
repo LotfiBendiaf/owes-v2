@@ -12,7 +12,7 @@ function links(role: "ADMIN" | "CLIENT") {
 
 function NavigationLinks({ role, onNavigate }: { role: "ADMIN" | "CLIENT"; onNavigate?: () => void }) {
   const pathname = usePathname();
-  return <nav aria-label="Navigation du tableau de bord" className="grid gap-1">{links(role).map(({ label, href, icon: Icon }) => { const active = href === "/dashboard" ? pathname === href : pathname.startsWith(href); return <Link onClick={onNavigate} aria-current={active ? "page" : undefined} key={href} href={href} className={cn("flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-brand-50 hover:text-brand-800", active && "bg-brand-50 text-brand-800")}><Icon size={17} />{label}</Link>; })}</nav>;
+  return <nav aria-label="Navigation du tableau de bord" className="grid gap-1">{links(role).map(({ label, href, icon: Icon }) => { const active = href === "/dashboard" ? pathname === href : pathname.startsWith(href); return <Link onClick={onNavigate} aria-current={active ? "page" : undefined} key={href} href={href} className={cn("flex items-center gap-3 border-l-2 border-transparent px-3 py-2.5 text-sm font-medium text-slate-600 hover:border-brand-300 hover:text-brand-800", active && "border-brand-500 bg-white text-brand-800")}><Icon size={17} />{label}</Link>; })}</nav>;
 }
 
 export function DesktopDashboardNavigation({ role }: { role: "ADMIN" | "CLIENT" }) {

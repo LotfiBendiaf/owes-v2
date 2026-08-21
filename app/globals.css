@@ -110,3 +110,7 @@ html { scroll-behavior: smooth; }
 }
 
 summary::-webkit-details-marker { display: none; }
+
+.editorial-dashboard :where(.rounded-xl, .rounded-2xl, .rounded-lg) {
+  border-radius: 0;
+}
