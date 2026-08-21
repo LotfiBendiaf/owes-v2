@@ -53,24 +53,24 @@ export function HeroCarousel() {
         </div>
       ))}
 
-      <div className="absolute inset-0 bg-linear-to-t from-brand-950/35 via-transparent to-brand-950/20" />
+      <div className="absolute inset-0 bg-linear-to-b from-brand-950/35 to-brand-950/0" />
 
-      <div className="absolute right-6 top-40 z-20 flex items-center gap-2 sm:right-8 sm:top-44">
+      <div className="absolute bottom-4 left-1/2 z-40 flex -translate-x-1/2 items-center gap-2 rounded-full border border-white/30 p-2 shadow-[0_8px_30px_rgba(0,15,61,0.55)] backdrop-blur-xl sm:bottom-6">
         <div className="mr-1 hidden rounded-full border border-white/30 bg-white/15 px-4 py-2 text-xs font-semibold text-white backdrop-blur-md sm:block">
           {slides[activeSlide].label}
         </div>
-        <button type="button" onClick={() => changeSlide(-1)} className="grid size-10 place-items-center rounded-full border border-white/25 bg-brand-950/55 text-white backdrop-blur-md transition hover:bg-white/15" aria-label="Image précédente">
+        <button type="button" onClick={() => changeSlide(-1)} className="grid size-10 place-items-center rounded-full border border-white/35 bg-white/10 text-white transition hover:bg-white/25" aria-label="Image précédente">
           <ChevronLeft size={18} />
         </button>
-        <button type="button" onClick={() => setIsPaused((current) => !current)} className="grid size-10 place-items-center rounded-full border border-white/25 bg-brand-950/55 text-white backdrop-blur-md transition hover:bg-white/15" aria-label={isPaused ? 'Reprendre le diaporama' : 'Mettre le diaporama en pause'}>
+        <button type="button" onClick={() => setIsPaused((current) => !current)} className="grid size-10 place-items-center rounded-full border border-white/35 bg-white/10 text-white transition hover:bg-white/25" aria-label={isPaused ? 'Reprendre le diaporama' : 'Mettre le diaporama en pause'}>
           {isPaused ? <Play size={16} /> : <Pause size={16} />}
         </button>
-        <button type="button" onClick={() => changeSlide(1)} className="grid size-10 place-items-center rounded-full border border-white/25 bg-brand-950/55 text-white backdrop-blur-md transition hover:bg-white/15" aria-label="Image suivante">
+        <button type="button" onClick={() => changeSlide(1)} className="grid size-10 place-items-center rounded-full border border-white/35 bg-white/10 text-white transition hover:bg-white/25" aria-label="Image suivante">
           <ChevronRight size={18} />
         </button>
       </div>
 
-      <div className="absolute right-7 top-28 z-20 flex gap-1.5 sm:right-10 sm:top-32">
+      <div className="absolute bottom-[5.15rem] left-1/2 z-40 flex -translate-x-1/2 gap-1.5 rounded-full bg-brand-950/75 px-3 py-2 shadow-lg backdrop-blur-md sm:bottom-[5.65rem]">
         {slides.map((slide, index) => (
           <button
             key={slide.src}
