@@ -9,7 +9,7 @@ export async function SiteHeader() {
 
   return (
     <div className="pointer-events-none fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-6 sm:pt-5">
-      <header className="pointer-events-auto mx-auto max-w-7xl border border-brand-950/15 bg-[#fbfaf7]/95 shadow-[0_12px_40px_rgba(0,15,61,0.1)] backdrop-blur-xl">
+      <header className="pointer-events-auto mx-auto max-w-7xl border border-brand-950/15 bg-white/75 shadow-[0_12px_40px_rgba(0,15,61,0.1)] backdrop-blur-md rounded-l-full">
         <div className="flex h-[4.5rem] items-stretch justify-between">
           <Link href="/" aria-label="Accueil OWES" className="flex min-w-0 items-center px-4 sm:px-6">
             <OwesLogoSlog className="h-14 w-auto" priority />
