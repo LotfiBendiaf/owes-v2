@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Bell, FileText, LayoutDashboard, Mail, Menu, Settings, Users, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { OwesLogoSlog } from "./owes-logo";
 
 function links(role: "ADMIN" | "CLIENT") {
   return [{ label: "Vue d’ensemble", href: "/dashboard", icon: LayoutDashboard }, { label: "Demandes", href: "/dashboard/requests", icon: FileText }, { label: "Notifications", href: "/dashboard/notifications", icon: Bell }, ...(role === "ADMIN" ? [{ label: "Contacts", href: "/dashboard/contacts", icon: Mail }, { label: "Utilisateurs", href: "/dashboard/users", icon: Users }] : []), { label: "Paramètres", href: "/dashboard/settings", icon: Settings }];
@@ -21,5 +22,5 @@ export function DesktopDashboardNavigation({ role }: { role: "ADMIN" | "CLIENT" 
 
 export function MobileDashboardNavigation({ role }: { role: "ADMIN" | "CLIENT" }) {
   const dialog = useRef<HTMLDialogElement>(null);
-  return <><button type="button" onClick={() => dialog.current?.showModal()} className="grid size-10 place-items-center rounded-xl border lg:hidden" aria-label="Ouvrir la navigation"><Menu size={20} /></button><dialog ref={dialog} className="m-0 h-full w-80 max-w-[88vw] bg-white p-5 shadow-2xl backdrop:bg-slate-950/40"><div className="mb-8 flex items-center justify-between"><Link href="/" className="text-xl font-black">OWES</Link><button type="button" onClick={() => dialog.current?.close()} className="grid size-10 place-items-center rounded-xl" aria-label="Fermer la navigation"><X size={20} /></button></div><NavigationLinks role={role} onNavigate={() => dialog.current?.close()} /></dialog></>;
+  return <><button type="button" onClick={() => dialog.current?.showModal()} className="grid size-10 place-items-center rounded-xl border lg:hidden" aria-label="Ouvrir la navigation"><Menu size={20} /></button><dialog ref={dialog} className="m-0 h-full w-80 max-w-[88vw] bg-white p-5 shadow-2xl backdrop:bg-slate-950/40"><div className="mb-8 flex items-center justify-between"><Link href="/" className="text-xl font-black"><OwesLogoSlog className="h-14 w-auto" priority /></Link><button type="button" onClick={() => dialog.current?.close()} className="grid size-10 place-items-center rounded-xl" aria-label="Fermer la navigation"><X size={20} /></button></div><NavigationLinks role={role} onNavigate={() => dialog.current?.close()} /></dialog></>;
 }

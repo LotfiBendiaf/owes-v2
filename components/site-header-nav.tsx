@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { BriefcaseBusiness, Info, Mail, Newspaper, type LucideIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
@@ -10,12 +9,12 @@ import { cn } from "@/lib/utils";
 const links: ReadonlyArray<{
   label: string;
   href: string;
-  icon: LucideIcon;
+  index: string;
 }> = [
-  { label: "Services", href: "/services", icon: BriefcaseBusiness },
-  { label: "Articles", href: "/articles", icon: Newspaper },
-  { label: "A propos", href: "/#about", icon: Info },
-  { label: "Contact", href: "/contact", icon: Mail },
+  { label: "Services", href: "/services", index: "01" },
+  { label: "Articles", href: "/articles", index: "02" },
+  { label: "À propos", href: "/#about", index: "03" },
+  { label: "Contact", href: "/contact", index: "04" },
 ];
 
 function useActiveHref() {
@@ -47,8 +46,8 @@ export function DesktopNav() {
   const isActiveHref = useActiveHref();
 
   return (
-    <nav className="hidden items-center gap-1 md:flex" aria-label="Navigation principale">
-      {links.map(({ label, href, icon: Icon }) => {
+    <nav className="hidden h-full items-stretch border-x border-brand-950/15 md:flex" aria-label="Navigation principale">
+      {links.map(({ label, href, index }) => {
         const isActive = isActiveHref(href);
 
         return (
@@ -57,12 +56,13 @@ export function DesktopNav() {
             href={href}
             aria-current={isActive ? "page" : undefined}
             className={cn(
-              "inline-flex items-center gap-2 rounded-full px-3.5 py-2 text-sm font-semibold text-slate-600 transition hover:bg-rose-50 hover:text-brand-950",
-              isActive && "bg-rose-50 text-brand-950 shadow-sm ring-1 ring-rose-100",
+              "group relative inline-flex min-w-24 items-center justify-center gap-2 border-r border-brand-950/15 px-4 text-sm font-bold text-brand-950 transition-colors last:border-r-0 hover:bg-brand-950 hover:text-white lg:min-w-28",
+              isActive && "bg-brand-950 text-white",
             )}
           >
-            <Icon size={15} className={cn("text-slate-400", isActive && "text-rose-500")} />
+            <span className={cn("font-mono text-[9px] text-slate-400 transition-colors group-hover:text-brand-200", isActive && "text-brand-200")}>{index}</span>
             {label}
+            <span className={cn("absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-rose-500 transition-transform group-hover:scale-x-100", isActive && "scale-x-100")} />
           </Link>
         );
       })}
@@ -75,7 +75,7 @@ export function MobileNavLinks() {
 
   return (
     <>
-      {links.map(({ label, href, icon: Icon }) => {
+      {links.map(({ label, href, index }) => {
         const isActive = isActiveHref(href);
 
         return (
@@ -84,12 +84,12 @@ export function MobileNavLinks() {
             href={href}
             aria-current={isActive ? "page" : undefined}
             className={cn(
-              "flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-700 hover:bg-rose-50",
-              isActive && "bg-rose-50 text-brand-950",
+              "group flex items-center justify-between border-b border-brand-950/15 px-1 py-4 text-base font-bold text-brand-950 transition-colors last:border-b-0 hover:text-brand-500",
+              isActive && "text-brand-500",
             )}
           >
-            <Icon size={16} className={cn("text-slate-400", isActive && "text-rose-500")} />
-            {label}
+            <span>{label}</span>
+            <span className={cn("font-mono text-[10px] text-slate-400", isActive && "text-brand-500")}>{index}</span>
           </Link>
         );
       })}

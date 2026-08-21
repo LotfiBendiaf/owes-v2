@@ -13,7 +13,7 @@ export function SiteFooter() {
       <div className="mx-auto max-w-7xl px-6 py-14 sm:py-20">
         <div className="grid gap-12 border-b border-brand-950/15 pb-14 lg:grid-cols-[1.15fr_.85fr]">
           <div><p className="font-mono text-xs uppercase tracking-[.2em] text-brand-700">Une idée à faire avancer ?</p><h2 className="mt-5 max-w-3xl text-4xl font-extrabold leading-[.95] tracking-[-.045em] sm:text-6xl">Prenons le temps d&apos;en parler <span className="font-normal italic text-brand-500">simplement.</span></h2></div>
-          <div className="flex items-end lg:justify-end"><Link href="/contact" className="group inline-flex items-center gap-5 rounded-full bg-brand-950 py-2 pl-7 pr-2 text-sm font-bold text-white transition hover:bg-brand-500">Démarrer une conversation <span className="grid size-10 place-items-center rounded-full bg-white text-brand-950"><ArrowUpRight size={17} className="transition group-hover:rotate-45" /></span></Link></div>
+          <div className="flex items-end lg:justify-end"><Link href="/contact" className="group inline-flex items-center gap-5 bg-brand-950 py-1 pl-7 pr-1 text-sm font-bold text-white transition hover:bg-brand-500">Démarrer une conversation <span className="grid size-10 place-items-center bg-white text-brand-950"><ArrowUpRight size={17} className="transition group-hover:rotate-45" /></span></Link></div>
         </div>
         <div className="grid gap-10 py-12 md:grid-cols-2 lg:grid-cols-[1.15fr_.65fr_1fr]">
           <div><Link href="/" className="inline-flex"><OwesLogoSlog className="h-14" /></Link><p className="mt-5 max-w-sm text-sm leading-7 text-slate-600">Office et Web Services accompagne les entrepreneurs algériens avec des espaces, une adresse et des outils pensés pour durer.</p></div>
