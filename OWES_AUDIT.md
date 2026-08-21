@@ -343,11 +343,11 @@ Risk: medium.
 
 ### Phase 2 — Core workflows
 
-- [ ] Build request detail, expert assignment, status history, and usable feedback.
-- [ ] Implement recovery, email verification, and profile editing.
-- [ ] Complete or remove misleading messaging/payment/document claims.
-- [ ] Add contact-message administration.
-- [ ] Add notifications only as real workflow side effects.
+- [x] Build scoped request details, admin/team handling, status history, and usable feedback. The obsolete expert-assignment scope was removed.
+- [x] Implement password recovery, conditional email verification through Resend, session revocation after reset, and profile editing.
+- [x] Remove misleading messaging/payment/document claims and the placeholder messaging route.
+- [x] Add contact-message administration with audited resolve/reopen actions.
+- [x] Add notifications as transactional request-status side effects with read-state management.
 
 Expected impact: turns the dashboard into an operational product.
 

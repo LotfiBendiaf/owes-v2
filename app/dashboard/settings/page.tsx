@@ -1,3 +1,11 @@
-import { requireUser } from "@/lib/authorization";
+import { ProfileForm } from "@/components/profile-form";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-export default async function SettingsPage() { const session = await requireUser(); return <div><h1 className="text-3xl font-black">Paramètres</h1><Card className="mt-8 max-w-xl"><CardHeader><CardTitle>Profil</CardTitle></CardHeader><CardContent className="grid gap-4 text-sm"><div><p className="text-slate-500">Nom</p><p className="font-semibold">{session.user.name}</p></div><div><p className="text-slate-500">E-mail</p><p className="font-semibold">{session.user.email}</p></div><p className="rounded-xl bg-rose-50 p-3 text-rose-900">Les modifications de profil seront disponibles prochainement.</p></CardContent></Card></div>; }
+import { requireUser } from "@/lib/authorization";
+import { prisma } from "@/lib/prisma";
+
+export default async function SettingsPage() {
+  const session = await requireUser();
+  const user = await prisma.user.findUnique({ where: { id: session.user.id }, select: { name: true, email: true, phone: true, clientProfile: { select: { company: true, address: true } } } });
+  if (!user) return null;
+  return <div><h1 className="text-3xl font-black">Paramètres</h1><Card className="mt-8 max-w-xl"><CardHeader><CardTitle>Profil</CardTitle></CardHeader><CardContent><ProfileForm profile={{ name: user.name, email: user.email, phone: user.phone ?? "", company: user.clientProfile?.company ?? "", address: user.clientProfile?.address ?? "" }} /></CardContent></Card></div>;
+}

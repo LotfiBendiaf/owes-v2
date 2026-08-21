@@ -8,8 +8,8 @@ export const metadata: Metadata = { title: "Connexion" };
 
 const highlights = [
   "Suivre vos demandes de service en cours",
-  "Consulter vos paiements et documents",
-  "Echanger avec l'equipe OWES depuis un espace centralise",
+  "Consulter l’état de vos demandes",
+  "Recevoir les mises à jour importantes de l’équipe OWES",
 ];
 
 function getSafeCallbackUrl(value: string | string[] | undefined) {
@@ -57,7 +57,7 @@ export default async function LoginPage({
               Retrouvez votre tableau de bord.
             </h1>
             <p className="mt-5 max-w-lg text-base leading-7 text-slate-600">
-              Reprenez vos demandes, factures, messages et suivis depuis un
+              Reprenez vos demandes et suivis depuis un
               espace clair, prive et organise.
             </p>
           </div>

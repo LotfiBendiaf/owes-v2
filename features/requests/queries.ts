@@ -38,3 +38,15 @@ export function listAllRequests(viewer: RequestViewer) {
     orderBy: { createdAt: "desc" },
   });
 }
+
+export function getRequestDetails(viewer: RequestViewer, id: string) {
+  return prisma.serviceRequest.findFirst({
+    where: { id, ...requestScope(viewer) },
+    include: {
+      service: { select: { name: true, slug: true } },
+      payments: { orderBy: { createdAt: "desc" } },
+      statusHistory: { include: { actor: { select: { name: true } } }, orderBy: { createdAt: "desc" } },
+      files: { orderBy: { createdAt: "desc" } },
+    },
+  });
+}

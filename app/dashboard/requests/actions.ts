@@ -18,6 +18,11 @@ export async function updateRequestStatus(formData: FormData) {
     if (!request) throw new AppError("NOT_FOUND", "Demande introuvable.");
     if (!canTransitionRequest(request.status, parsed.data.status)) throw new AppError("BUSINESS_RULE", "Cette transition de statut n’est pas autorisée.");
     await tx.serviceRequest.update({ where: { id: parsed.data.requestId }, data: { status: parsed.data.status } });
+    await tx.requestStatusEvent.create({ data: { requestId: parsed.data.requestId, actorId: session.user.id, from: request.status, to: parsed.data.status } });
+    const owner = await tx.serviceRequest.findUnique({ where: { id: parsed.data.requestId }, select: { clientId: true } });
+    if (owner?.clientId && request.status !== parsed.data.status) {
+      await tx.notification.create({ data: { userId: owner.clientId, title: "Statut de votre demande mis à jour", body: `Votre demande est passée de ${request.status} à ${parsed.data.status}.`, href: `/dashboard/requests/${parsed.data.requestId}` } });
+    }
     await recordAudit(tx, { actorId: session.user.id, action: "request.status_changed", entityType: "ServiceRequest", entityId: parsed.data.requestId, metadata: { from: request.status, to: parsed.data.status } });
   });
   revalidatePath("/dashboard"); revalidatePath("/dashboard/requests");

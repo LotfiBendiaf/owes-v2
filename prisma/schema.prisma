@@ -62,6 +62,7 @@ model User {
   notifications Notification[]
   files         FileAsset[]
   auditLogs     AuditLog[] @relation("AuditActor")
+  statusEvents  RequestStatusEvent[] @relation("StatusActor")
 }
 
 model Session {
@@ -161,6 +162,7 @@ model ServiceRequest {
   payments      Payment[]
   conversation  Conversation?
   files         FileAsset[]
+  statusHistory RequestStatusEvent[]
 
   @@unique([legacyTable, legacyId])
   @@index([clientId, status])
@@ -292,5 +294,19 @@ model AuditLog {
   actor      User?    @relation("AuditActor", fields: [actorId], references: [id], onDelete: SetNull)
 
   @@index([entityType, entityId, createdAt])
+  @@index([actorId, createdAt])
+}
+
+model RequestStatusEvent {
+  id        String        @id @default(cuid())
+  from      RequestStatus
+  to        RequestStatus
+  createdAt DateTime      @default(now())
+  requestId String
+  request   ServiceRequest @relation(fields: [requestId], references: [id], onDelete: Cascade)
+  actorId   String?
+  actor     User?          @relation("StatusActor", fields: [actorId], references: [id], onDelete: SetNull)
+
+  @@index([requestId, createdAt])
   @@index([actorId, createdAt])
 }
