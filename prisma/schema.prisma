@@ -63,6 +63,8 @@ model User {
   files         FileAsset[]
   auditLogs     AuditLog[] @relation("AuditActor")
   statusEvents  RequestStatusEvent[] @relation("StatusActor")
+
+  @@index([role, active, createdAt])
 }
 
 model Session {
@@ -166,6 +168,8 @@ model ServiceRequest {
 
   @@unique([legacyTable, legacyId])
   @@index([clientId, status])
+  @@index([clientId, createdAt])
+  @@index([status, createdAt])
 }
 
 model Payment {
@@ -179,6 +183,8 @@ model Payment {
   createdAt   DateTime      @default(now())
   requestId   String
   request     ServiceRequest @relation(fields: [requestId], references: [id], onDelete: Cascade)
+
+  @@index([requestId, status])
 }
 
 model Conversation {
@@ -214,6 +220,7 @@ model Notification {
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId, readAt])
+  @@index([userId, createdAt])
 }
 
 model FileAsset {
@@ -227,6 +234,9 @@ model FileAsset {
   owner     User?           @relation(fields: [ownerId], references: [id], onDelete: SetNull)
   requestId String?
   request   ServiceRequest? @relation(fields: [requestId], references: [id], onDelete: Cascade)
+
+  @@index([ownerId, createdAt])
+  @@index([requestId, createdAt])
 }
 
 model Article {
@@ -243,6 +253,8 @@ model Article {
   published   Boolean          @default(true)
   sections    ArticleSection[]
   media       ArticleMedia[]
+
+  @@index([published, publishedAt])
 }
 
 model ArticleSection {
@@ -274,6 +286,8 @@ model ContactMessage {
   message   String
   resolved  Boolean  @default(false)
   createdAt DateTime @default(now())
+
+  @@index([resolved, createdAt])
 }
 
 model MigrationRun {

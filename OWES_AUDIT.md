@@ -355,11 +355,11 @@ Risk: medium–high because business decisions are required.
 
 ### Phase 3 — Performance and scalability
 
-- [ ] Add indexed URL-backed filters and pagination.
-- [ ] Replace dashboard reductions with database aggregates.
-- [ ] Narrow Prisma selections.
-- [ ] Cache/revalidate published article data appropriately.
-- [ ] Optimize/remove unused large public assets.
+- [x] Add indexed URL-backed filters and pagination for requests, users, contacts, notifications, and articles.
+- [x] Replace dashboard reductions over eight recent records with scoped database counts and aggregates.
+- [x] Narrow Prisma selections on operational list and dashboard queries.
+- [x] Cache and revalidate published article data with tagged server-side caching.
+- [x] Remove verified-unreferenced legacy media and retain optimized `next/image` delivery for active assets.
 
 Expected impact: supports thousands of records without redesign.
 

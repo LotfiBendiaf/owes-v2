@@ -1,7 +1,7 @@
 import { Banknote, CheckCircle2, Clock3, FileText } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { getRecentRequests } from "@/features/requests/queries";
+import { getDashboardData } from "@/features/requests/queries";
 import { requireUser } from "@/lib/authorization";
 import { money } from "@/lib/utils";
 
@@ -10,14 +10,13 @@ export const dynamic = "force-dynamic";
 export default async function DashboardPage() {
   const session = await requireUser();
   const role = session.user.role;
-  const requests = await getRecentRequests({ id: session.user.id, role });
-  const total = requests.reduce((sum, request) => sum + Number(request.total), 0);
-  const paid = requests.flatMap((request) => request.payments).filter((payment) => payment.status === "PAID").reduce((sum, payment) => sum + Number(payment.amount), 0);
+  const dashboard = await getDashboardData({ id: session.user.id, role });
+  const requests = dashboard.recent;
   const cards = [
-    { label: "Demandes", value: requests.length, icon: FileText },
-    { label: "En cours", value: requests.filter((request) => !["COMPLETED", "CANCELLED"].includes(request.status)).length, icon: Clock3 },
-    { label: "Terminées", value: requests.filter((request) => request.status === "COMPLETED").length, icon: CheckCircle2 },
-    { label: role === "CLIENT" ? "Montant engagé" : "Chiffre suivi", value: money(role === "CLIENT" ? total : paid), icon: Banknote },
+    { label: "Demandes", value: dashboard.count, icon: FileText },
+    { label: "En cours", value: dashboard.inProgress, icon: Clock3 },
+    { label: "Terminées", value: dashboard.completed, icon: CheckCircle2 },
+    { label: role === "CLIENT" ? "Montant engagé" : "Chiffre suivi", value: money(role === "CLIENT" ? dashboard.total : dashboard.paid), icon: Banknote },
   ];
 
   return (
