@@ -1,5 +1,6 @@
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { SectionReveal } from "@/components/section-reveal";
 import ActivityStrip from "@/components/sections/activity-strip";
 import CallToAction from "@/components/sections/call-to-action";
 import DomiciliationPlans from "@/components/sections/domiciliation-plans";
@@ -13,15 +14,15 @@ export default function Home() {
   return (
     <>
       <SiteHeader />
-      <main>
-        <Hero />
-        <ActivityStrip />
-        <Services />
-        <WhyUs />
-        <DomiciliationPlans />
-        <Process />
-        <FindUs />
-        <CallToAction />
+      <main className="overflow-x-clip">
+        <SectionReveal direction="left"><Hero /></SectionReveal>
+        <SectionReveal direction="right"><ActivityStrip /></SectionReveal>
+        <SectionReveal direction="left"><Services /></SectionReveal>
+        <SectionReveal direction="right"><WhyUs /></SectionReveal>
+        <SectionReveal direction="left"><DomiciliationPlans /></SectionReveal>
+        <SectionReveal direction="right"><Process /></SectionReveal>
+        <SectionReveal direction="left"><FindUs /></SectionReveal>
+        <SectionReveal direction="right"><CallToAction /></SectionReveal>
       </main>
       <SiteFooter />
     </>
