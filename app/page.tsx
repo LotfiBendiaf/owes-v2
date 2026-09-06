@@ -23,10 +23,10 @@ export default function Home() {
         <SectionReveal direction="left"><Facilities /></SectionReveal>
         <SectionReveal direction="right"><WhyUs /></SectionReveal>
         <SectionReveal direction="left"><DomiciliationPlans /></SectionReveal>
-        <SectionReveal direction="right"><EnterprisePack /></SectionReveal>
+        <SectionReveal direction="right"><CallToAction /></SectionReveal>
+        <SectionReveal direction="left"><EnterprisePack /></SectionReveal>
         <SectionReveal direction="right"><Process /></SectionReveal>
         <SectionReveal direction="left"><FindUs /></SectionReveal>
-        <SectionReveal direction="right"><CallToAction /></SectionReveal>
       </main>
       <SiteFooter />
     </>
