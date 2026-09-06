@@ -9,8 +9,8 @@ export async function SiteHeader() {
 
   return (
     <div className="pointer-events-none fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-6 sm:pt-5">
-      <header className="pointer-events-auto mx-auto max-w-7xl border border-brand-950/15 bg-white/75 shadow-[0_12px_40px_rgba(0,15,61,0.1)] backdrop-blur-md rounded-l-full">
-        <div className="flex h-[4.5rem] items-stretch justify-between">
+      <header className="pointer-events-auto mx-auto max-w-7xl p-2 border border-brand-950/15 bg-white/75 shadow-[0_12px_40px_rgba(0,15,61,0.1)] backdrop-blur-md rounded-full">
+        <div className="flex h-14 items-stretch justify-between">
           <Link href="/" aria-label="Accueil OWES" className="flex min-w-0 items-center px-4 sm:px-6">
             <OwesLogoSlog className="h-14 w-auto" priority />
           </Link>
@@ -22,8 +22,8 @@ export async function SiteHeader() {
               <Link href="/dashboard" className="group flex items-center gap-3 bg-brand-500 px-5 text-sm font-bold text-white transition-colors hover:bg-brand-950 lg:px-6">Mon espace <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" /></Link>
             ) : (
               <>
-                <Link href="/login" className="hidden items-center gap-2 border-l border-brand-950/15 px-4 text-sm font-bold text-brand-950 transition-colors hover:bg-white lg:flex"><LogIn size={15} />Connexion</Link>
-                <Link href="/register" className="group flex items-center gap-3 bg-brand-500 px-5 text-sm font-bold text-white transition-colors hover:bg-brand-950 lg:px-6">Commencer <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" /></Link>
+                <Link href="/login" className="hidden items-center gap-2 border-l border-brand-950/15 px-4 text-sm font-bold text-brand-950 transition-colors hover:text-brand-500 lg:flex"><LogIn size={15} />Connexion</Link>
+                <Link href="/register" className="group flex items-center gap-3 bg-brand-500 px-5 rounded-full text-sm font-bold text-white transition-colors hover:bg-brand-950 lg:px-6">Commencer <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" /></Link>
               </>
             )}
           </div>
