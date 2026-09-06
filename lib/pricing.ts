@@ -1,7 +1,8 @@
 export const pricing = {
+  enterprisePack: 50_000,
   meeting: { halfDay: 5_000, fullDay: 8_000 },
   trainingDay: 9_000,
-  websiteBuilding: { starter: 80_000, business: 150_000, ecommerce: 250_000 },
+  websiteBuilding: { starter: 120_000, business: 150_000, ecommerce: 250_000 },
   domiciliation: { standard: 15_000, premium: 27_000, exclusive: 21_000 },
   coworking: {
     day: { small: 1_000, group: 667 },

@@ -17,6 +17,7 @@ enum RequestKind {
   TRAINING
   DOMICILIATION
   WEBSITE_BUILDING
+  ENTERPRISE_PACK
 }
 
 enum RequestStatus {

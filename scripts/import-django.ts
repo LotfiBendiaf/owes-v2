@@ -46,7 +46,7 @@ async function seedCatalog() {
   const services = [
     ["Salle de réunion", "meeting", "MEETING", 5_000], ["Coworking", "coworking", "COWORKING", 1_000],
     ["Formation", "training", "TRAINING", 9_000], ["Domiciliation", "domiciliation", "DOMICILIATION", 15_000],
-    ["Création de sites web", "website-building", "WEBSITE_BUILDING", 80_000],
+    ["Création de sites web", "website-building", "WEBSITE_BUILDING", 120_000],
   ] as const;
   for (const [name, slug, kind, basePrice] of services) await prisma.service.upsert({ where: { slug }, update: { name, kind, basePrice }, create: { name, slug, kind, basePrice, description: `Service ${name.toLowerCase()} OWES`, categoryId: category.id } });
 }

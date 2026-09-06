@@ -22,7 +22,7 @@ test("public service request exposes the five offers and updates the estimate", 
   await expect(page.getByRole("heading", { name: "Un service adapté à chaque étape" })).toBeVisible();
   await page.getByLabel("Service").selectOption("WEBSITE_BUILDING");
   await expect(page.getByLabel("Formule")).toContainText("Site vitrine");
-  await expect(page.getByText("80 000 DA", { exact: true })).toBeVisible();
+  await expect(page.getByText("120 000 DA", { exact: true })).toBeVisible();
 });
 
 test("public pages have no automatically detectable serious accessibility violations", async ({ page }) => {

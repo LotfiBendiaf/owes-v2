@@ -1,4 +1,4 @@
-import { ArrowUpRight, Building2, CalendarDays, Code2, GraduationCap, Users } from "lucide-react";
+import { ArrowUpRight, BriefcaseBusiness, Building2, CalendarDays, Code2, GraduationCap, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -16,6 +16,7 @@ const services = [
   { icon: CalendarDays, number: "03", title: "Salles de réunion", text: "Des espaces prêts pour vos clients, équipes et ateliers.", href: "/services#meeting", image: "/office/salle_reunion.jpg", color: "bg-[#f9e8e8] text-rose-700" },
   { icon: GraduationCap, number: "04", title: "Formation", text: "Des programmes pratiques animés par des spécialistes.", href: "/services#training", image: "/office/formation.jpg", color: "bg-[#fff0d9] text-amber-700" },
   { icon: Code2, number: "05", title: "Création de sites web", text: "Une présence claire, distinctive et conçue pour convertir.", href: "/services#website-building", image: "/office/bureau_prevatif.jpg", color: "bg-[#eee8f8] text-violet-700" },
+  { icon: BriefcaseBusiness, number: "06", title: "Pack entreprise", text: "Un accompagnement pour créer votre entreprise, étape par étape.", href: "/services#pack-entreprise", image: "/office/bureau_prive.jpg", color: "bg-[#f0eadf] text-amber-800" },
 ];
 
 export default function Services() {
@@ -26,7 +27,7 @@ export default function Services() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid gap-8 border-b border-brand-950/15 pb-10 lg:grid-cols-[1fr_.65fr] lg:items-end">
           <div>
-            <p className="font-mono text-xs uppercase tracking-[.2em] text-brand-700">Le catalogue — 01/05</p>
+            <p className="font-mono text-xs uppercase tracking-[.2em] text-brand-700">Le catalogue — 01/06</p>
             <h2 className="mt-5 max-w-3xl text-4xl font-extrabold leading-[.98] tracking-[-.045em] text-brand-950 sm:text-6xl">Tout ce qu&apos;il faut pour <span className="font-normal italic text-brand-500">faire avancer</span> votre activité.</h2>
           </div>
           <p className="max-w-xl text-base leading-7 text-slate-600 lg:justify-self-end">Une sélection resserrée de services concrets. Chaque formule est lisible, modulable et accompagnée par notre équipe.</p>

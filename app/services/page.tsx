@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { ArrowDownRight, Building2, CalendarDays, Code2, GraduationCap, Users } from "lucide-react";
+import Image from "next/image";
+import { ArrowDownRight, BriefcaseBusiness, Building2, CalendarDays, Code2, GraduationCap, Users } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ServiceRequestForm } from "@/components/service-request-form";
@@ -9,11 +10,12 @@ import { pricing } from "@/lib/pricing";
 export const metadata: Metadata = { title: "Services" };
 
 const items = [
-  { id: "domiciliation", icon: Building2, number: "01", title: "Domiciliation", kicker: "Votre adresse", text: "Adresse commerciale, réception de courrier et accompagnement administratif.", price: pricing.domiciliation.standard, color: "bg-[#e7edff] text-brand-700" },
-  { id: "coworking", icon: Users, number: "02", title: "Coworking", kicker: "Votre espace", text: "Postes flexibles pour une journée, une semaine ou un mois, dans un cadre professionnel.", price: pricing.coworking.day.small, color: "bg-[#e4f3ec] text-emerald-700" },
-  { id: "meeting", icon: CalendarDays, number: "03", title: "Salle de réunion", kicker: "Vos rendez-vous", text: "Une salle équipée à la demi-journée ou à la journée pour recevoir dans de bonnes conditions.", price: pricing.meeting.halfDay, color: "bg-[#f9e8e8] text-rose-700" },
-  { id: "training", icon: GraduationCap, number: "04", title: "Formation", kicker: "Vos compétences", text: "Des formations professionnelles ciblées, pratiques et directement opérationnelles.", price: pricing.trainingDay, color: "bg-[#fff0d9] text-amber-700" },
-  { id: "website-building", icon: Code2, number: "05", title: "Création de sites web", kicker: "Votre présence", text: "Sites vitrines, professionnels et e-commerce conçus autour de votre activité.", price: pricing.websiteBuilding.starter, color: "bg-[#eee8f8] text-violet-700" },
+  { id: "domiciliation", image: "/office/owes.jpg", icon: Building2, number: "01", title: "Domiciliation", kicker: "Votre adresse", text: "Adresse commerciale, réception de courrier et accompagnement administratif.", price: pricing.domiciliation.standard, color: "bg-[#e7edff] text-brand-700" },
+  { id: "pack-entreprise", image: "/office/bureau_prive.jpg", icon: BriefcaseBusiness, number: "06", title: "Pack entreprise", kicker: "Votre lancement", text: "Un accompagnement pour créer votre entreprise : conseils, aide aux démarches et suivi de votre projet, étape par étape.", price: pricing.enterprisePack, color: "bg-[#f0eadf] text-amber-800" },
+  { id: "coworking", image: "/office/coworking.jpg", icon: Users, number: "02", title: "Coworking", kicker: "Votre espace", text: "Postes flexibles pour une journée, une semaine ou un mois, dans un cadre professionnel.", price: pricing.coworking.day.small, color: "bg-[#e4f3ec] text-emerald-700" },
+  { id: "meeting", image: "/office/salle_reunion.jpg", icon: CalendarDays, number: "03", title: "Salle de réunion", kicker: "Vos rendez-vous", text: "Une salle équipée à la demi-journée ou à la journée pour recevoir dans de bonnes conditions.", price: pricing.meeting.halfDay, color: "bg-[#f9e8e8] text-rose-700" },
+  { id: "training", image: "/office/formation.jpg", icon: GraduationCap, number: "04", title: "Formation", kicker: "Vos compétences", text: "Des formations professionnelles ciblées, pratiques et directement opérationnelles.", price: pricing.trainingDay, color: "bg-[#fff0d9] text-amber-700" },
+  { id: "website-building", image: "/office/bureau_prevatif.jpg", icon: Code2, number: "05", title: "Création de sites web", kicker: "Votre présence", text: "Sites vitrines, professionnels et e-commerce conçus autour de votre activité.", price: pricing.websiteBuilding.starter, color: "bg-[#eee8f8] text-violet-700" },
 ];
 
 export default function ServicesPage() {
@@ -35,19 +37,43 @@ export default function ServicesPage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 pb-24">
-        <div className="divide-y divide-brand-950/15 border-b border-brand-950/15">
-          {items.map(({ icon: Icon, ...item }) => (
-            <article key={item.id} id={item.id} className="scroll-mt-32 grid gap-6 py-10 md:grid-cols-[4rem_1fr_1.2fr_auto] md:items-start">
-              <span className="font-mono text-xs text-slate-400">{item.number}</span>
-              <div>
-                <span className={`grid size-12 place-items-center rounded-full ${item.color}`}><Icon size={19} strokeWidth={1.7} /></span>
-                <p className="mt-5 font-mono text-[10px] uppercase tracking-[.18em] text-slate-500">{item.kicker}</p>
-                <h2 className="mt-2 text-3xl font-bold tracking-tight text-brand-950">{item.title}</h2>
-              </div>
-              <p className="max-w-lg text-base leading-7 text-slate-600">{item.text}</p>
-              <div className="min-w-40 md:text-right"><p className="font-mono text-[10px] uppercase tracking-widest text-slate-400">À partir de</p><p className="mt-2 text-lg font-extrabold text-brand-950">{money(item.price)}</p></div>
-            </article>
-          ))}
+        <div className="grid gap-px border-y border-brand-950/15 bg-brand-950/15 sm:grid-cols-2 lg:grid-cols-[1.35fr_1fr_1fr]">
+          {items.map(({ icon: Icon, ...item }, index) => {
+            const featured = index === 0;
+
+            return (
+              <article
+                key={item.id}
+                id={item.id}
+                className={`flex min-w-0 scroll-mt-32 flex-col bg-[#fbfaf7] py-8 sm:p-7 ${featured ? "sm:col-span-2 lg:col-span-1 lg:col-start-1 lg:row-start-1 lg:py-10 lg:pl-0 lg:pr-10" : item.id === "pack-entreprise" ? "sm:col-span-2 lg:col-span-1 lg:col-start-1 lg:row-start-2 lg:py-8 lg:pl-0 lg:pr-10" : "lg:p-8"}`}
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div className="relative size-20 shrink-0 overflow-hidden bg-slate-200">
+                    <Image src={item.image} alt="" fill sizes="80px" className="object-cover" />
+                  </div>
+                  <span className={`grid size-10 shrink-0 place-items-center ${item.color}`}><Icon size={18} strokeWidth={1.7} /></span>
+                </div>
+                <div className={featured ? "mt-8 lg:mt-14" : "mt-6"}>
+                  <p className="font-mono text-[10px] uppercase tracking-[.18em] text-slate-500">{item.number} — {item.kicker}</p>
+                  <h2 className={`mt-3 font-bold tracking-tight text-brand-950 ${featured ? "text-4xl sm:text-5xl lg:text-[2.75rem]" : "text-2xl"}`}>{item.title}</h2>
+                  <p className="mt-4 text-sm leading-6 text-slate-600">{item.text}</p>
+                  {featured && (
+                    <div className="mt-7 flex flex-wrap gap-x-3 gap-y-2 font-mono text-[10px] uppercase tracking-wider text-brand-700">
+                      {["Standard", "Premium", "Exclusive"].map((plan) => (
+                        <span key={plan} className="after:ml-3 after:text-slate-400 after:content-['·'] last:after:content-none">{plan}</span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                <div className="mt-auto pt-7">
+                  <div className="border-t border-brand-950/10 pt-5">
+                    <p className="font-mono text-[10px] uppercase tracking-widest text-slate-500">{item.id === "pack-entreprise" ? "Prix du pack" : "À partir de"}</p>
+                    <p className={`mt-2 font-serif font-semibold italic tracking-[-.045em] text-brand-950 ${featured ? "text-4xl sm:text-5xl" : "text-3xl"}`}>{money(item.price)}</p>
+                  </div>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </section>
 

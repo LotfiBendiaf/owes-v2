@@ -2,11 +2,12 @@ import "dotenv/config";
 import { prisma } from "../lib/prisma";
 
 const services = [
+  ["Pack entreprise", "pack-entreprise", "ENTERPRISE_PACK", 50_000],
   ["Salle de réunion", "meeting", "MEETING", 5_000],
   ["Coworking", "coworking", "COWORKING", 1_000],
   ["Formation", "training", "TRAINING", 9_000],
   ["Domiciliation", "domiciliation", "DOMICILIATION", 15_000],
-  ["Création de sites web", "website-building", "WEBSITE_BUILDING", 80_000],
+  ["Création de sites web", "website-building", "WEBSITE_BUILDING", 120_000],
 ] as const;
 
 async function main() {

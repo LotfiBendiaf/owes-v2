@@ -8,10 +8,13 @@ export const serviceSlugByKind = {
   COWORKING: "coworking",
   MEETING: "meeting",
   TRAINING: "training",
+  ENTERPRISE_PACK: "pack-entreprise",
 } satisfies Record<RequestKind, string>;
 
 export function quoteServiceRequest(input: ServiceRequestInput) {
   switch (input.kind) {
+    case "ENTERPRISE_PACK":
+      return pricing.enterprisePack;
     case "MEETING":
       return input.option === "full" ? pricing.meeting.fullDay : pricing.meeting.halfDay;
     case "TRAINING":

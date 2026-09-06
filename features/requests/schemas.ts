@@ -11,6 +11,7 @@ const commonRequestFields = {
 };
 
 export const serviceRequestSchema = z.discriminatedUnion("kind", [
+  z.object({ ...commonRequestFields, kind: z.literal("ENTERPRISE_PACK"), option: z.literal("pack") }),
   z.object({ ...commonRequestFields, kind: z.literal("MEETING"), option: z.enum(["half", "full"]) }),
   z.object({ ...commonRequestFields, kind: z.literal("COWORKING"), option: z.enum(["day", "week", "month"]) }),
   z.object({ ...commonRequestFields, kind: z.literal("TRAINING"), option: z.literal("day") }),

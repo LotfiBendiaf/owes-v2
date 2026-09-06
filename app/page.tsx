@@ -4,6 +4,7 @@ import { SectionReveal } from "@/components/section-reveal";
 import ActivityStrip from "@/components/sections/activity-strip";
 import CallToAction from "@/components/sections/call-to-action";
 import DomiciliationPlans from "@/components/sections/domiciliation-plans";
+import EnterprisePack from "@/components/sections/enterprise-pack";
 import Facilities from "@/components/sections/facilities";
 import Hero from "@/components/sections/hero";
 import FindUs from "@/components/sections/find-us";
@@ -22,6 +23,7 @@ export default function Home() {
         <SectionReveal direction="left"><Facilities /></SectionReveal>
         <SectionReveal direction="right"><WhyUs /></SectionReveal>
         <SectionReveal direction="left"><DomiciliationPlans /></SectionReveal>
+        <SectionReveal direction="right"><EnterprisePack /></SectionReveal>
         <SectionReveal direction="right"><Process /></SectionReveal>
         <SectionReveal direction="left"><FindUs /></SectionReveal>
         <SectionReveal direction="right"><CallToAction /></SectionReveal>
