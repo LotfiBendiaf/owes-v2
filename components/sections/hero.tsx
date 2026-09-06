@@ -8,7 +8,7 @@ export default function Hero() {
     <section className="relative min-h-svh overflow-hidden bg-brand-950">
       <HeroCarousel />
 
-      <div className="pointer-events-none absolute inset-0 z-10 bg-brand-700/20" />
+      <div className="pointer-events-none absolute inset-0 z-10 bg-brand-700/15" />
 
       <div className="relative z-20 mx-auto flex min-h-svh max-w-7xl items-end px-4 pb-28 pt-20 sm:px-6 sm:pb-32 lg:px-8">
         <div className="pointer-events-auto w-full py-7 text-white sm:p-10 lg:p-12">
