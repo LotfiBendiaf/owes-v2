@@ -60,7 +60,7 @@ export default function Services() {
                 <div className="min-w-0">
                   <div className="flex items-center gap-3">
                     <span className={`grid size-8 shrink-0 place-items-center rounded-full ${service.color}`}><Icon size={14} strokeWidth={1.7} /></span>
-                    <span className="font-mono text-[10px] text-slate-400">{service.number}</span>
+                    <span className="font-mono text-[10px] text-slate-600">{service.number}</span>
                   </div>
                   <h3 className="mt-3 text-xl font-bold tracking-tight text-brand-950 transition group-hover:text-brand-500 sm:text-2xl">{service.title}</h3>
                   <p className="mt-1 text-xs leading-5 text-slate-600 sm:text-sm">{service.text}</p>

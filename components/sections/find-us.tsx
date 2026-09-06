@@ -19,7 +19,7 @@ export default function FindUs() {
             <h2 className="mt-5 text-4xl font-extrabold leading-[.98] tracking-[-.045em] text-brand-950 sm:text-5xl">Votre prochain rendez-vous, <span className="font-normal italic text-brand-500">à Alger.</span></h2>
             <p className="mt-6 max-w-md leading-7 text-slate-600">Rejoignez notre espace pour un rendez-vous, une journée de coworking ou votre prochaine formation.</p>
             <div className="mt-9 divide-y divide-brand-950/15 border-b border-brand-950/15">
-              {details.map(({ icon: Icon, ...detail }) => <div key={detail.label} className="grid grid-cols-[2.5rem_1fr] gap-4 py-4"><span className={`grid size-9 place-items-center rounded-full ${detail.color}`}><Icon size={15} /></span><div><p className="font-mono text-[9px] uppercase tracking-[.18em] text-slate-400">{detail.label}</p><p className="mt-1 text-sm font-semibold text-brand-950">{detail.value}</p></div></div>)}
+              {details.map(({ icon: Icon, ...detail }) => <div key={detail.label} className="grid grid-cols-[2.5rem_1fr] gap-4 py-4"><span className={`grid size-9 place-items-center rounded-full ${detail.color}`}><Icon size={15} /></span><div><p className="font-mono text-[9px] uppercase tracking-[.18em] text-slate-600">{detail.label}</p><p className="mt-1 text-sm font-semibold text-brand-950">{detail.value}</p></div></div>)}
             </div>
           </div>
 

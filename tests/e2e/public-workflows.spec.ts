@@ -17,15 +17,23 @@ test.afterAll(async ({}, testInfo) => {
   await prisma.$disconnect();
 });
 
-test("public service request exposes the five offers and updates the estimate", async ({ page }) => {
+test("public service request exposes the six offers and updates the estimate", async ({ page }) => {
   await page.goto("/services");
-  await expect(page.getByRole("heading", { name: "Un service adapté à chaque étape" })).toBeVisible();
-  await page.getByLabel("Service").selectOption("WEBSITE_BUILDING");
-  await expect(page.getByLabel("Formule")).toContainText("Site vitrine");
-  await expect(page.getByText("120 000 DA", { exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: "Les bons services, au bon moment." })).toBeVisible();
+  const form = page.locator("#demande form");
+  const service = form.getByLabel("Service");
+  await expect(service.locator("option")).toHaveText([
+    "Salle de réunion", "Coworking", "Formation", "Domiciliation", "Création de site web", "Pack entreprise",
+  ]);
+  await service.selectOption("WEBSITE_BUILDING");
+  await expect(form.getByLabel("Formule")).toContainText("Site vitrine");
+  await expect(form.getByText("120 000 DA", { exact: true })).toBeVisible();
+  await form.getByLabel("Formule").selectOption("business");
+  await expect(form.getByText("150 000 DA", { exact: true })).toBeVisible();
 });
 
 test("public pages have no automatically detectable serious accessibility violations", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
   for (const path of ["/", "/services", "/contact", "/login", "/register"]) {
     await page.goto(path);
     const results = await new AxeBuilder({ page }).analyze();
@@ -80,7 +88,7 @@ test("authentication recovery and protected-route redirect are available", async
   await page.goto("/dashboard");
   await expect(page).toHaveURL(/\/login/);
   await page.getByRole("link", { name: "Mot de passe oublié ?" }).click();
-  await expect(page.getByRole("heading", { name: "Mot de passe oublié" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: "Retrouvez votre accès." })).toBeVisible();
 });
 
 test("public navigation remains usable on small screens", async ({ page, isMobile }) => {

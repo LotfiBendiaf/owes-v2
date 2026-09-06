@@ -60,7 +60,7 @@ export function DesktopNav() {
               isActive && "bg-brand-950 text-white",
             )}
           >
-            <span className={cn("font-mono text-[9px] text-slate-400 transition-colors group-hover:text-brand-200", isActive && "text-brand-200")}>{index}</span>
+            <span className={cn("font-mono text-[9px] text-slate-600 transition-colors group-hover:text-brand-200", isActive && "text-brand-200")}>{index}</span>
             {label}
             <span className={cn("absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-rose-500 transition-transform group-hover:scale-x-100", isActive && "scale-x-100")} />
           </Link>
@@ -89,7 +89,7 @@ export function MobileNavLinks() {
             )}
           >
             <span>{label}</span>
-            <span className={cn("font-mono text-[10px] text-slate-400", isActive && "text-brand-500")}>{index}</span>
+            <span className={cn("font-mono text-[10px] text-slate-600", isActive && "text-brand-500")}>{index}</span>
           </Link>
         );
       })}

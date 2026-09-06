@@ -18,7 +18,7 @@ export default function Process() {
             <p className="font-mono text-xs uppercase tracking-[.2em] text-brand-700">Notre méthode — 04</p>
             <h2 className="mt-5 max-w-xl text-4xl font-extrabold leading-[.98] tracking-[-.045em] text-brand-950 sm:text-5xl">Simple, du premier échange au <span className="font-normal italic text-brand-500">suivi quotidien.</span></h2>
             <div className="mt-10 divide-y divide-brand-950/15 border-b border-brand-950/15">
-              {steps.map((step) => <article key={step.num} className="grid grid-cols-[3rem_1fr] gap-4 py-6"><span className="font-mono text-xs text-rose-600">{step.num}</span><div><h3 className="text-lg font-bold text-brand-950">{step.title}</h3><p className="mt-2 max-w-lg text-sm leading-6 text-slate-600">{step.text}</p></div></article>)}
+              {steps.map((step) => <article key={step.num} className="grid grid-cols-[3rem_1fr] gap-4 py-6"><span className="font-mono text-xs text-rose-700">{step.num}</span><div><h3 className="text-lg font-bold text-brand-950">{step.title}</h3><p className="mt-2 max-w-lg text-sm leading-6 text-slate-600">{step.text}</p></div></article>)}
             </div>
           </div>
 
